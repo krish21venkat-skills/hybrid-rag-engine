@@ -5,4 +5,4 @@ llm_model: llama3.1:latest
 chunk_size: 1000
 chunk_overlap: 150
 top_k: 5
-min_rerank_score: 0.05
+min_rerank_score: 0.02
