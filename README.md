@@ -92,7 +92,7 @@ A question counts as a hit only if a chunk from the right file is retrieved **an
 | Run | Change | hit@5 | MRR | Abstain rate |
 |---|---|---|---|---|
 | 1 | Baseline (chunk 1000/150, `min_rerank_score` 0.05) | 0.958 | 0.917 | 1.0 |
-| 2 | chunk_size: 1000 | chunk_overlap: 150 | top_k: 5 | min_rerank_score: 0.02
+| 2 | chunk 1000/150, threshold 0.02 | 1.000 | 0.958 | 1.0 |
 
 The single miss in run 1 was a valid question ("hotel limit for employees in metro cities") whose chunk scored below the cut-off and was rejected. Inspecting the scores with the threshold set to 0 showed this, and the run 2 change fixed it without letting any out-of-scope question through.
 
