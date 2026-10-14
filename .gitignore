@@ -1,0 +1,9 @@
+.venv/
+storage/
+.pytest_cache/
+__pycache__/
+*.egg-info/
+.ipynb_checkpoints/
+.env
+*.log
+.vscode/

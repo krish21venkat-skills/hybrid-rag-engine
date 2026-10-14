@@ -1,0 +1,16 @@
+Acme Corp Company Policy Handbook (Version 3.2)
+
+Working Hours and Remote Work
+Standard working hours are 9:30 AM to 6:30 PM, Monday to Friday, with a one-hour lunch break. Employees may work remotely up to 3 days per week with manager approval. Core collaboration hours are 11:00 AM to 4:00 PM, when all employees must be reachable on the company chat tool. Fully remote arrangements need written approval from the VP of the department and are reviewed every 6 months.
+
+Expense Reimbursement
+Business expenses must be submitted within 30 days of being incurred, with original receipts attached. Meals during business travel are reimbursed up to 1,500 rupees per day. Hotel stays are capped at 6,000 rupees per night in metro cities and 4,000 rupees elsewhere. Air travel must be booked in economy class unless the flight exceeds 6 hours. Claims above 25,000 rupees require approval from the finance controller. Approved claims are paid within 10 working days.
+
+Code of Conduct
+Employees must treat colleagues, customers and partners with respect. Harassment or discrimination of any kind is prohibited and must be reported to the Ethics Committee at ethics@acme.example. Reports can be made anonymously, and retaliation against anyone who reports in good faith is a disciplinary offence.
+
+Information Security
+Company laptops must use full-disk encryption and a screen lock after 5 minutes of inactivity. Passwords must be at least 14 characters long and changed every 90 days. Confidential data may not be copied to personal cloud storage or personal email. Any lost device or suspected breach must be reported to the IT Security desk within 2 hours of discovery.
+
+Performance Reviews
+Reviews are held twice a year, in June and December. Ratings use a five-point scale, and a rating of 2 or below triggers a 90-day performance improvement plan.

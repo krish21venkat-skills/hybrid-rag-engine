@@ -1,0 +1,8 @@
+embed_model: BAAI/bge-small-en-v1.5
+rerank_model: BAAI/bge-reranker-base
+llm_provider: ollama
+llm_model: llama3.1:latest
+chunk_size: 1000
+chunk_overlap: 150
+top_k: 5
+min_rerank_score: 0.05

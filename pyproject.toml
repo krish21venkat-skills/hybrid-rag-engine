@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hybridrag"
+version = "0.1.0"
+description = "Hybrid RAG engine: structure-aware chunking, dense + BM25 retrieval, RRF fusion, cross-encoder reranking, local LLM."
+requires-python = ">=3.10"
+dependencies = [
+  "chromadb", "sentence-transformers", "pypdf", "rank_bm25",
+  "langchain-text-splitters", "ollama", "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+api = ["fastapi", "uvicorn"]
+
+[project.scripts]
+hybridrag = "hybridrag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
