@@ -1,0 +1,78 @@
+{
+ "file": "eval\\flip.jsonl",
+ "fingerprint": "de9b44b532",
+ "settings": {
+  "embed_model": "BAAI/bge-small-en-v1.5",
+  "rerank_model": "BAAI/bge-reranker-base",
+  "llm_provider": "ollama",
+  "llm_model": "llama3.1:latest",
+  "query_prefix": "Represent this sentence for searching relevant passages: ",
+  "chunk_size": 1000,
+  "chunk_overlap": 150,
+  "min_chunk_len": 80,
+  "candidates": 20,
+  "top_k": 5,
+  "min_rerank_score": 0.05,
+  "rrf_k": 60,
+  "abstain_below": 0.01,
+  "max_retries": 0,
+  "db_path": "storage\\chroma",
+  "collection": "docs"
+ },
+ "summary": {
+  "n_valid": 0,
+  "valid_answered": 0,
+  "valid_correct": 0,
+  "n_oos": 4,
+  "leaks": 3,
+  "errors": 0,
+  "leaks_by_type": {
+   "trap": "3/4"
+  },
+  "answer_p50_s": 29.6,
+  "answer_p95_s": 30.8,
+  "abstain_p50_s": 10.2
+ },
+ "rows": [
+  {
+   "question": "How often are firmware updates pushed to the meters?",
+   "decision": "answer",
+   "answer": "every 15 minutes",
+   "quote": "It reports consumption every 15 minutes over a cellular connection and supports remote firmware updates.",
+   "top1": 0.1195,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 29.6
+  },
+  {
+   "question": "What is the name of the engagement manager for contractors?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Contractors report to a named engagement manager",
+   "top1": 0.5481,
+   "fit_blocked": true,
+   "error": "",
+   "seconds": 10.2
+  },
+  {
+   "question": "What is the delay between payment gateway retry attempts?",
+   "decision": "answer",
+   "answer": "3 attempts with exponential backoff",
+   "quote": "the service retries 3 times with exponential backoff before failing.",
+   "top1": 0.0692,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 30.8
+  },
+  {
+   "question": "What time does the Tuesday release finish?",
+   "decision": "answer",
+   "answer": "2:00 PM IST",
+   "quote": "Releases are deployed every Tuesday and Thursday at 2:00 PM IST using a rolling update strategy.",
+   "top1": 0.3211,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 14.8
+  }
+ ]
+}

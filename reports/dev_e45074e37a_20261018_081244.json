@@ -1,0 +1,818 @@
+{
+ "file": "eval\\dev.jsonl",
+ "fingerprint": "e45074e37a",
+ "settings": {
+  "embed_model": "BAAI/bge-small-en-v1.5",
+  "rerank_model": "BAAI/bge-reranker-base",
+  "llm_provider": "ollama",
+  "llm_model": "llama3.1:latest",
+  "query_prefix": "Represent this sentence for searching relevant passages: ",
+  "chunk_size": 1000,
+  "chunk_overlap": 150,
+  "min_chunk_len": 80,
+  "candidates": 20,
+  "top_k": 5,
+  "min_rerank_score": 0.05,
+  "rrf_k": 60,
+  "abstain_below": 0.01,
+  "max_retries": 0,
+  "db_path": "storage\\chroma",
+  "collection": "docs"
+ },
+ "summary": {
+  "n_valid": 37,
+  "valid_answered": 32,
+  "valid_correct": 32,
+  "n_oos": 41,
+  "leaks": 5,
+  "errors": 0,
+  "leaks_by_type": {
+   "oos": "5/41"
+  },
+  "answer_p50_s": 32.6,
+  "answer_p95_s": 55.7,
+  "abstain_p50_s": 16.4
+ },
+ "rows": [
+  {
+   "question": "How many days of paid sick leave do I get in a year?",
+   "decision": "answer",
+   "answer": "12",
+   "quote": "Employees are entitled to 12 days of paid sick leave per year.",
+   "top1": 0.9669,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 32.7
+  },
+  {
+   "question": "Can unused sick leave be cashed out?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.421,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 28.8
+  },
+  {
+   "question": "What is the minimum password length?",
+   "decision": "answer",
+   "answer": "14",
+   "quote": "Passwords must be at least 14 characters long",
+   "top1": 0.0208,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 24.6
+  },
+  {
+   "question": "After how many minutes of inactivity does the laptop screen lock?",
+   "decision": "answer",
+   "answer": "5 minutes",
+   "quote": "Company laptops must use full-disk encryption and a screen lock after 5 minutes of inactivity.",
+   "top1": 0.9967,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 30.4
+  },
+  {
+   "question": "Who has to approve very large expense claims?",
+   "decision": "answer",
+   "answer": "The finance controller",
+   "quote": "Claims above 25,000 rupees require approval from the finance controller.",
+   "top1": 0.1939,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 55.7
+  },
+  {
+   "question": "How many database connections are in the pool per instance?",
+   "decision": "answer",
+   "answer": "20",
+   "quote": "The first remedy is to check the connection pool, which is sized at 20 connections per instance.",
+   "top1": 0.997,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 25.2
+  },
+  {
+   "question": "How much does the SM-200 weigh?",
+   "decision": "answer",
+   "answer": "1.2 kg",
+   "quote": "The SM-200 weighs 1.2 kg",
+   "top1": 0.9994,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 26.6
+  },
+  {
+   "question": "How quickly must a SEV2 be acknowledged?",
+   "decision": "answer",
+   "answer": "15 minutes",
+   "quote": "For SEV2, acknowledgement is required within 15 minutes with updates every 60 minutes.",
+   "top1": 0.9993,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 31.7
+  },
+  {
+   "question": "can i expense my meals on a work trip",
+   "decision": "answer",
+   "answer": "Yes, up to 1,500 rupees per day",
+   "quote": "Meals during business travel are reimbursed up to 1,500 rupees per day.",
+   "top1": 0.2827,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 41.8
+  },
+  {
+   "question": "i lost my laptop what now",
+   "decision": "answer",
+   "answer": "Report to the IT Security desk within 2 hours",
+   "quote": "Any lost device or suspected breach must be reported to the IT Security desk within 2 hours of discovery.",
+   "top1": 0.1204,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 35.3
+  },
+  {
+   "question": "the app feels slow, what response time is expected",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0057,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 3.8
+  },
+  {
+   "question": "kitne din ki sick leave milti hai?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0004,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.0
+  },
+  {
+   "question": "How many days of study leave can employees take?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.1703,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 40.4
+  },
+  {
+   "question": "What is the maximum laptop budget for new hires?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0003,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.1
+  },
+  {
+   "question": "Does the Orders API support pagination?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.5871,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 26.8
+  },
+  {
+   "question": "Which Redis version does the platform use?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.6343,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 18.4
+  },
+  {
+   "question": "How often are firmware updates pushed to the meters?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "It supports remote firmware updates.",
+   "top1": 0.1195,
+   "fit_blocked": true,
+   "error": "",
+   "seconds": 28.5
+  },
+  {
+   "question": "What is the warranty claim process for the Orion meter?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.1289,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 23.3
+  },
+  {
+   "question": "What is the on-call rotation schedule?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Hotfixes can be deployed outside the schedule with approval from the on-call engineering manager.",
+   "top1": 0.0546,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 37.2
+  },
+  {
+   "question": "Is there a gym membership benefit?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0006,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.1
+  },
+  {
+   "question": "Who chairs the Ethics Committee?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0092,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 3.9
+  },
+  {
+   "question": "How do I book a meeting room?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0054,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 3.8
+  },
+  {
+   "question": "What is the speed limit on the company campus?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0039,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 3.9
+  },
+  {
+   "question": "Translate good morning into French.",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 3.8
+  },
+  {
+   "question": "How many weeks of maternity leave are given for the first child?",
+   "decision": "answer",
+   "answer": "26 weeks",
+   "quote": "Maternity leave is 26 weeks of paid leave for the first two children and 12 weeks for the third child onwards.",
+   "top1": 0.9917,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 41.7
+  },
+  {
+   "question": "Whose approval is needed for leave longer than 10 consecutive days?",
+   "decision": "answer",
+   "answer": "Department head and line manager",
+   "quote": "Requests longer than 10 consecutive days require approval from the department head in addition to the line manager.",
+   "top1": 0.9972,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 28.6
+  },
+  {
+   "question": "How often is a fully remote arrangement reviewed?",
+   "decision": "answer",
+   "answer": "every 6 months",
+   "quote": "Fully remote arrangements need written approval from the VP of the department and are reviewed every 6 months.",
+   "top1": 0.8326,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 37.8
+  },
+  {
+   "question": "What is the hotel cap outside metro cities?",
+   "decision": "answer",
+   "answer": "4,000 rupees",
+   "quote": "Hotel stays are capped at 4,000 rupees elsewhere.",
+   "top1": 0.0329,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 31.4
+  },
+  {
+   "question": "Can contractors work remotely from another country?",
+   "decision": "answer",
+   "answer": "No",
+   "quote": "Remote work from outside the country is not permitted for contractors.",
+   "top1": 0.2516,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 40.7
+  },
+  {
+   "question": "How many failed sign-in attempts lock an account?",
+   "decision": "answer",
+   "answer": "5",
+   "quote": "Accounts are locked for 30 minutes after 5 failed sign-in attempts.",
+   "top1": 0.9817,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 32.8
+  },
+  {
+   "question": "How long is a refresh token valid?",
+   "decision": "answer",
+   "answer": "7 days",
+   "quote": "Clients must refresh the token using the refresh endpoint before expiry, and refresh tokens are valid for 7 days.",
+   "top1": 0.9977,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 29.8
+  },
+  {
+   "question": "At what height must the meter be installed?",
+   "decision": "answer",
+   "answer": "1.5 to 1.8 metres",
+   "quote": "The meter must be installed at a height between 1.5 and 1.8 metres.",
+   "top1": 0.9918,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 31.9
+  },
+  {
+   "question": "How many action items must a post-incident report include?",
+   "decision": "answer",
+   "answer": "3",
+   "quote": "The report must include a timeline, root cause, customer impact and at least 3 action items with named owners.",
+   "top1": 0.9976,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 37.9
+  },
+  {
+   "question": "How long does the commissioning test take?",
+   "decision": "answer",
+   "answer": "10 minutes",
+   "quote": "After installation, the technician must run the commissioning test, which takes about 10 minutes.",
+   "top1": 0.9386,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 34.5
+  },
+  {
+   "question": "where do i report harassment at work",
+   "decision": "answer",
+   "answer": "ethics@acme.example",
+   "quote": "Harassment or discrimination of any kind is prohibited and must be reported to the Ethics Committee at ethics@acme.example.",
+   "top1": 0.9397,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 43.4
+  },
+  {
+   "question": "how soon do i get a new keyboard after asking",
+   "decision": "answer",
+   "answer": "5 working days",
+   "quote": "Approved requests are delivered within 5 working days.",
+   "top1": 0.1791,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 37.9
+  },
+  {
+   "question": "can i skip the release schedule for an urgent fix",
+   "decision": "answer",
+   "answer": "yes, with approval",
+   "quote": "Hotfixes can be deployed outside the schedule with approval from the on-call engineering manager.",
+   "top1": 0.0234,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 34.4
+  },
+  {
+   "question": "when are the company holidays announced",
+   "decision": "answer",
+   "answer": "December",
+   "quote": "The holiday list is published every December on the HR portal.",
+   "top1": 0.6654,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 46.6
+  },
+  {
+   "question": "Contractor ko laptop kitne din mein wapas karna hai?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0001,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.0
+  },
+  {
+   "question": "Which cloud provider hosts the Orders API?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.8942,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.4
+  },
+  {
+   "question": "How many replicas of the Orders API run in production?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.3218,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 16.2
+  },
+  {
+   "question": "What type of battery does the Orion meter use?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Battery backup 5 years | 8 years",
+   "top1": 0.1399,
+   "fit_blocked": true,
+   "error": "",
+   "seconds": 27.4
+  },
+  {
+   "question": "What is the IT Security desk's email address?",
+   "decision": "answer",
+   "answer": "ethics@acme.example",
+   "quote": "Reports can be made anonymously, and retaliation against anyone who reports in good faith is a disciplinary offence.",
+   "top1": 0.0565,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.3
+  },
+  {
+   "question": "How long does a rollback usually take to complete?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.3329,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 23.0
+  },
+  {
+   "question": "How many days of marriage leave are allowed?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Maternity leave is 26 weeks of paid leave for the first two children and 12 weeks for the third child onwards.",
+   "top1": 0.0379,
+   "fit_blocked": true,
+   "error": "",
+   "seconds": 21.2
+  },
+  {
+   "question": "How many days of compassionate leave are allowed for a family emergency?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.1113,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 11.2
+  },
+  {
+   "question": "How many days of notice are needed to extend a contractor's contract?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Contracts may be extended once, for a maximum of 6 additional months.",
+   "top1": 0.445,
+   "fit_blocked": true,
+   "error": "",
+   "seconds": 37.9
+  },
+  {
+   "question": "What is the maximum payload size in MB for the Orders API?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.2122,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 16.4
+  },
+  {
+   "question": "What is the screen lock timeout on personal phones?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0359,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 22.2
+  },
+  {
+   "question": "What is the boiling point of water at sea level?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0002,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.1
+  },
+  {
+   "question": "Who wrote the novel Pride and Prejudice?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.0
+  },
+  {
+   "question": "How do I convert a list to a set in Python?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0012,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 3.6
+  },
+  {
+   "question": "What is the current price of gold?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0002,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.0
+  },
+  {
+   "question": "What is the longest river in Africa?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.1
+  },
+  {
+   "question": "Which software do I install to connect to the company VPN?",
+   "decision": "answer",
+   "answer": "Acme Secure Connect",
+   "quote": "Install the Acme Secure Connect client from the software portal, sign in with your company email, and approve the multi-factor prompt on your phone.",
+   "top1": 0.9939,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.5
+  },
+  {
+   "question": "What number do I call if I can't reset my password myself?",
+   "decision": "answer",
+   "answer": "4400",
+   "quote": "If you cannot reset it yourself, call the helpdesk on extension 4400.",
+   "top1": 0.9953,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 35.3
+  },
+  {
+   "question": "Who owns the technical investigation during an incident?",
+   "decision": "answer",
+   "answer": "The operations lead",
+   "quote": "The operations lead owns technical investigation.",
+   "top1": 0.9937,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 29.8
+  },
+  {
+   "question": "What pattern should the incident channel name follow?",
+   "decision": "answer",
+   "answer": "inc-YYYYMMDD-short-name",
+   "quote": "Open the incident channel named with the pattern inc-YYYYMMDD-short-name.",
+   "top1": 0.9906,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 18.6
+  },
+  {
+   "question": "How long are device certificates valid?",
+   "decision": "answer",
+   "answer": "1 year",
+   "quote": "Certificates are valid for 1 year.",
+   "top1": 0.9804,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 28.4
+  },
+  {
+   "question": "Which encryption does the meter use for its data?",
+   "decision": "answer",
+   "answer": "AES-256",
+   "quote": "Data is encrypted with AES-256 and sent to the head-end system every reporting interval.",
+   "top1": 0.6416,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 31.0
+  },
+  {
+   "question": "What does the meter fall back to when 4G is not available?",
+   "decision": "answer",
+   "answer": "2G",
+   "quote": "Both models use a 4G LTE module with automatic fallback to 2G.",
+   "top1": 0.7346,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 25.9
+  },
+  {
+   "question": "Which error code means the payment gateway is unavailable?",
+   "decision": "answer",
+   "answer": "E-5009",
+   "quote": "Error E-5009 means the downstream payment gateway is unavailable, and the service retries 3 times with exponential backoff before failing.",
+   "top1": 0.9986,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 32.6
+  },
+  {
+   "question": "what do i need to sign before i start as a contractor",
+   "decision": "answer",
+   "answer": "non-disclosure agreement",
+   "quote": "Contractors must sign the non-disclosure agreement before receiving system access.",
+   "top1": 0.3826,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 43.9
+  },
+  {
+   "question": "Can I carry forward my sick leave to next year?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.9327,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 35.9
+  },
+  {
+   "question": "What is the diameter of the SM-200 display?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.1064,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 20.1
+  },
+  {
+   "question": "How many hours of battery life does a company laptop have?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0088,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.5
+  },
+  {
+   "question": "What is the delay between payment gateway retry attempts?",
+   "decision": "answer",
+   "answer": "3 attempts with exponential backoff",
+   "quote": "the service retries 3 times with exponential backoff before failing.",
+   "top1": 0.0692,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.7
+  },
+  {
+   "question": "How many days do I have to appeal a poor performance rating?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0254,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 34.6
+  },
+  {
+   "question": "What is the penalty for submitting an expense claim late?",
+   "decision": "answer",
+   "answer": "Claims submitted late incur no penalty, but are paid 5 working days later.",
+   "quote": "Claims must be submitted within 15 days and are paid within 20 working days.",
+   "top1": 0.2345,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 56.3
+  },
+  {
+   "question": "How many people attend a post-incident review?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0283,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 34.5
+  },
+  {
+   "question": "What time does the Tuesday release finish?",
+   "decision": "answer",
+   "answer": "2:00 PM IST",
+   "quote": "Releases are deployed every Tuesday and Thursday at 2:00 PM IST using a rolling update strategy.",
+   "top1": 0.3211,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 44.9
+  },
+  {
+   "question": "What is the maximum monthly invoice amount for a contractor?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Invoices must be raised monthly and submitted by the 5th of the following month.",
+   "top1": 0.6192,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 42.6
+  },
+  {
+   "question": "What is the rated current of the SM-300?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.6836,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.0
+  },
+  {
+   "question": "What is the name of the engagement manager for contractors?",
+   "decision": "answer",
+   "answer": "named engagement manager",
+   "quote": "Contractors report to a named engagement manager",
+   "top1": 0.5481,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.3
+  },
+  {
+   "question": "What is the incident commander's phone number?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0834,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 21.0
+  },
+  {
+   "question": "What is the square root of 144?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 3.8
+  },
+  {
+   "question": "Name the largest planet in the solar system.",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0649,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 14.8
+  },
+  {
+   "question": "How do I center a div in CSS?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0002,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.1
+  }
+ ]
+}

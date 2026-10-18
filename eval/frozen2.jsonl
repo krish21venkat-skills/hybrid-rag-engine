@@ -1,0 +1,40 @@
+{"question": "How much is the daily meal allowance during business travel?", "source": "CompanyPolicy.txt", "answer_contains": "1,500"}
+{"question": "What is the hotel cap per night outside metro cities?", "source": "CompanyPolicy.txt", "answer_contains": "4,000"}
+{"question": "laptop screen locks after how long idle", "source": "CompanyPolicy.txt", "answer_contains": "5 minutes"}
+{"question": "How many days of unpaid leave can a contractor take per contract term?", "source": "ContractorPolicy.txt", "answer_contains": "8 days"}
+{"question": "On which days must contractors be on site?", "source": "ContractorPolicy.txt", "answer_contains": "Tuesday"}
+{"question": "By which day of the month must contractors submit invoices?", "source": "ContractorPolicy.txt", "answer_contains": "5th"}
+{"question": "How quickly must the on-call engineer acknowledge a SEV1?", "source": "IncidentRunbook.md", "answer_contains": "5 minutes"}
+{"question": "How soon must a post-incident review be held after a SEV1 or SEV2?", "source": "IncidentRunbook.md", "answer_contains": "5 working days"}
+{"question": "What naming pattern is used for the incident channel?", "source": "IncidentRunbook.md", "answer_contains": "inc-YYYYMMDD"}
+{"question": "How many working days before joining are employee accounts created?", "source": "ITHelpdeskFAQ.md", "answer_contains": "2 working days"}
+{"question": "Which extension handles critical outages around the clock?", "source": "ITHelpdeskFAQ.md", "answer_contains": "4411"}
+{"question": "how long does a contractor account take to get created", "source": "ITHelpdeskFAQ.md", "answer_contains": "3 working days"}
+{"question": "how many annual leave days do i get", "source": "LeaveRules.txt", "answer_contains": "24"}
+{"question": "How many weeks of maternity leave are given for the first two children?", "source": "LeaveRules.txt", "answer_contains": "26 weeks"}
+{"question": "How many public holidays does the company observe each year?", "source": "LeaveRules.txt", "answer_contains": "12"}
+{"question": "What is the warranty period of the SM-300?", "source": "ProductSpecs.md", "answer_contains": "5 years"}
+{"question": "How many days of readings can the meter store without a network?", "source": "ProductSpecs.md", "answer_contains": "60 days"}
+{"question": "What is the minimum clearance height range for installing the meter?", "source": "ProductSpecs.md", "answer_contains": "1.5"}
+{"question": "How many requests per minute is each API key limited to?", "source": "TechNotes.md", "answer_contains": "100"}
+{"question": "What HTTP status is returned when the rate limit is exceeded?", "source": "TechNotes.md", "answer_contains": "429"}
+{"question": "What is the notice period for resigning during probation?", "source": null, "type": "trap"}
+{"question": "Who approves contractor extensions beyond 6 months?", "source": null, "type": "trap"}
+{"question": "What is the maximum file size for uploads through the API?", "source": null, "type": "trap"}
+{"question": "How long are IT helpdesk tickets kept before archiving?", "source": null, "type": "trap"}
+{"question": "Who is the incident commander for SEV3 issues?", "source": null, "type": "trap"}
+{"question": "What is the maximum operating altitude of the Orion SM-200?", "source": null, "type": "trap"}
+{"question": "How many days before expiry are VPN certificate renewal reminders sent?", "source": null, "type": "trap"}
+{"question": "What is the maximum payload size for a single order?", "source": null, "type": "trap"}
+{"question": "What is the dress code for client site visits?", "source": null, "type": "trap"}
+{"question": "What is the company policy on sabbaticals?", "source": null, "type": "trap"}
+{"question": "is there gym reimbursment", "source": null, "type": "messy"}
+{"question": "laptop broke wat do, replacement cost", "source": null, "type": "messy"}
+{"question": "can i bring my dog 2 office", "source": null, "type": "messy"}
+{"question": "wats the bonus policy", "source": null, "type": "messy"}
+{"question": "What is the boiling point of ethanol?", "source": null, "type": "offdomain"}
+{"question": "How do I make a margherita pizza?", "source": null, "type": "offdomain"}
+{"question": "Who won the 2018 football World Cup?", "source": null, "type": "offdomain"}
+{"question": "Explain how photosynthesis works.", "source": null, "type": "offdomain"}
+{"question": "What is the current price of Bitcoin?", "source": null, "type": "offdomain"}
+{"question": "Write a poem about the sea.", "source": null, "type": "offdomain"}

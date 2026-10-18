@@ -1,0 +1,440 @@
+{
+ "file": "eval\\frozen2.jsonl",
+ "fingerprint": "467019b4d6",
+ "settings": {
+  "embed_model": "BAAI/bge-small-en-v1.5",
+  "rerank_model": "BAAI/bge-reranker-base",
+  "llm_provider": "ollama",
+  "llm_model": "llama3.1:latest",
+  "query_prefix": "Represent this sentence for searching relevant passages: ",
+  "chunk_size": 1000,
+  "chunk_overlap": 150,
+  "min_chunk_len": 80,
+  "candidates": 20,
+  "top_k": 5,
+  "min_rerank_score": 0.05,
+  "rrf_k": 60,
+  "abstain_below": 0.001,
+  "max_retries": 0,
+  "db_path": "storage\\chroma",
+  "collection": "docs"
+ },
+ "summary": {
+  "n_valid": 20,
+  "valid_answered": 19,
+  "valid_correct": 18,
+  "n_oos": 20,
+  "leaks": 0,
+  "errors": 0,
+  "leaks_by_type": {
+   "trap": "0/10",
+   "messy": "0/4",
+   "offdomain": "0/6"
+  },
+  "answer_p50_s": 39.0,
+  "answer_p95_s": 58.1,
+  "abstain_p50_s": 23.2
+ },
+ "rows": [
+  {
+   "question": "How much is the daily meal allowance during business travel?",
+   "decision": "answer",
+   "answer": "1,500 rupees",
+   "quote": "Meals during business travel are reimbursed up to 1,500 rupees per day.",
+   "top1": 0.8704,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 53.6
+  },
+  {
+   "question": "What is the hotel cap per night outside metro cities?",
+   "decision": "answer",
+   "answer": "4,000 rupees",
+   "quote": "Hotel stays are capped at 4,000 rupees elsewhere.",
+   "top1": 0.2397,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 22.5
+  },
+  {
+   "question": "laptop screen locks after how long idle",
+   "decision": "answer",
+   "answer": "5 minutes",
+   "quote": "Company laptops must use full-disk encryption and a screen lock after 5 minutes of inactivity.",
+   "top1": 0.7502,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 44.5
+  },
+  {
+   "question": "How many days of unpaid leave can a contractor take per contract term?",
+   "decision": "answer",
+   "answer": "8 days",
+   "quote": "Unpaid leave of up to 8 days per contract term may be taken with engagement manager approval, given at least 7 working days in advance.",
+   "top1": 0.9951,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 54.7
+  },
+  {
+   "question": "On which days must contractors be on site?",
+   "decision": "answer",
+   "answer": "Tuesdays and Wednesdays",
+   "quote": "Remote work is limited to 2 days per week, and contractors must be on site on Tuesdays and Wednesdays.",
+   "top1": 0.9502,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 31.7
+  },
+  {
+   "question": "By which day of the month must contractors submit invoices?",
+   "decision": "answer",
+   "answer": "5th",
+   "quote": "Invoices must be raised monthly and submitted by the 5th of the following month.",
+   "top1": 0.998,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 58.1
+  },
+  {
+   "question": "How quickly must the on-call engineer acknowledge a SEV1?",
+   "decision": "answer",
+   "answer": "5 minutes",
+   "quote": "For SEV1, the on-call engineer must acknowledge within 5 minutes",
+   "top1": 0.9998,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 33.1
+  },
+  {
+   "question": "How soon must a post-incident review be held after a SEV1 or SEV2?",
+   "decision": "answer",
+   "answer": "5 working days",
+   "quote": "A blameless review must be held within 5 working days of every SEV1 or SEV2 incident.",
+   "top1": 0.9997,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 32.4
+  },
+  {
+   "question": "What naming pattern is used for the incident channel?",
+   "decision": "answer",
+   "answer": "inc-YYYYMMDD-short-name",
+   "quote": "Open the incident channel named with the pattern inc-YYYYMMDD-short-name.",
+   "top1": 0.9991,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 26.6
+  },
+  {
+   "question": "How many working days before joining are employee accounts created?",
+   "decision": "answer",
+   "answer": "2",
+   "quote": "New employee accounts are created 2 working days before the joining date.",
+   "top1": 0.9965,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 45.7
+  },
+  {
+   "question": "Which extension handles critical outages around the clock?",
+   "decision": "answer",
+   "answer": "4411",
+   "quote": "Critical outages are handled 24 hours a day through the on-call line on extension 4411.",
+   "top1": 0.9948,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 34.8
+  },
+  {
+   "question": "how long does a contractor account take to get created",
+   "decision": "answer",
+   "answer": "3 working days",
+   "quote": "Contractor accounts need an approved access form and take 3 working days.",
+   "top1": 0.99,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 43.3
+  },
+  {
+   "question": "how many annual leave days do i get",
+   "decision": "answer",
+   "answer": "24",
+   "quote": "Every permanent employee receives 24 days of paid annual leave per calendar year.",
+   "top1": 0.9783,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 50.2
+  },
+  {
+   "question": "How many weeks of maternity leave are given for the first two children?",
+   "decision": "answer",
+   "answer": "26 weeks",
+   "quote": "Maternity leave is 26 weeks of paid leave for the first two children and 12 weeks for the third child onwards.",
+   "top1": 0.9988,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 50.7
+  },
+  {
+   "question": "How many public holidays does the company observe each year?",
+   "decision": "answer",
+   "answer": "12",
+   "quote": "The company observes 12 public holidays each year.",
+   "top1": 0.9989,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 44.6
+  },
+  {
+   "question": "What is the warranty period of the SM-300?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "5 years",
+   "top1": 0.932,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 37.1
+  },
+  {
+   "question": "How many days of readings can the meter store without a network?",
+   "decision": "answer",
+   "answer": "60",
+   "quote": "If the network is unavailable, the meter stores up to 60 days of readings and uploads them once connectivity returns.",
+   "top1": 0.9889,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 28.4
+  },
+  {
+   "question": "What is the minimum clearance height range for installing the meter?",
+   "decision": "answer",
+   "answer": "1.5 to 1.8 metres",
+   "quote": "The meter must be installed at a height between 1.5 and 1.8 metres.",
+   "top1": 0.405,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 38.9
+  },
+  {
+   "question": "How many requests per minute is each API key limited to?",
+   "decision": "answer",
+   "answer": "100",
+   "quote": "Each API key is limited to 100 requests per minute.",
+   "top1": 0.9999,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 39.0
+  },
+  {
+   "question": "What HTTP status is returned when the rate limit is exceeded?",
+   "decision": "answer",
+   "answer": "HTTP 429",
+   "quote": "When the limit is exceeded, the service returns HTTP 429 with the error code E-4290 and a Retry-After header.",
+   "top1": 0.9988,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.6
+  },
+  {
+   "question": "What is the notice period for resigning during probation?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0019,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 27.3
+  },
+  {
+   "question": "Who approves contractor extensions beyond 6 months?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Contracts may be extended once, for a maximum of 6 additional months.",
+   "top1": 0.4685,
+   "fit_blocked": true,
+   "error": "",
+   "seconds": 35.4
+  },
+  {
+   "question": "What is the maximum file size for uploads through the API?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0022,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 18.6
+  },
+  {
+   "question": "How long are IT helpdesk tickets kept before archiving?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0545,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 24.4
+  },
+  {
+   "question": "Who is the incident commander for SEV3 issues?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.6169,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 20.0
+  },
+  {
+   "question": "What is the maximum operating altitude of the Orion SM-200?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.5055,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 22.7
+  },
+  {
+   "question": "How many days before expiry are VPN certificate renewal reminders sent?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0839,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 23.8
+  },
+  {
+   "question": "What is the maximum payload size for a single order?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0035,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 31.6
+  },
+  {
+   "question": "What is the dress code for client site visits?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0015,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 23.2
+  },
+  {
+   "question": "What is the company policy on sabbaticals?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.2063,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 11.7
+  },
+  {
+   "question": "is there gym reimbursment",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0278,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 38.7
+  },
+  {
+   "question": "laptop broke wat do, replacement cost",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "Battery replacements are free for laptops under 3 years old.",
+   "top1": 0.007,
+   "fit_blocked": true,
+   "error": "",
+   "seconds": 38.3
+  },
+  {
+   "question": "can i bring my dog 2 office",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0063,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 35.4
+  },
+  {
+   "question": "wats the bonus policy",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0061,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 37.5
+  },
+  {
+   "question": "What is the boiling point of ethanol?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0001,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.2
+  },
+  {
+   "question": "How do I make a margherita pizza?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.0
+  },
+  {
+   "question": "Who won the 2018 football World Cup?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.5
+  },
+  {
+   "question": "Explain how photosynthesis works.",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0005,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.5
+  },
+  {
+   "question": "What is the current price of Bitcoin?",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0005,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.5
+  },
+  {
+   "question": "Write a poem about the sea.",
+   "decision": "abstain",
+   "answer": "I couldn't find this in the documents.",
+   "quote": "",
+   "top1": 0.0,
+   "fit_blocked": false,
+   "error": "",
+   "seconds": 4.5
+  }
+ ]
+}
