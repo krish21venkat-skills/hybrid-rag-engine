@@ -5,6 +5,7 @@ import logging
 import re
 from dataclasses import replace
 from typing import TypedDict
+from .llm import LLMUnavailable, llm_chat
 
 import ollama
 from langgraph.graph import END, START, StateGraph
@@ -12,6 +13,7 @@ from langgraph.graph import END, START, StateGraph
 from .config import Settings, load_settings
 from .pipeline import RAGPipeline
 
+MAX_Q = 500
 log = logging.getLogger(__name__)
 NO_ANSWER = "I couldn't find this in the documents."
 
@@ -121,7 +123,7 @@ class GraphRAG:
 
     def _judge(self, st: State):
         context = "\n\n".join(h.text for h in st["hits"])
-        resp = ollama.chat(
+        resp = llm_chat(
             model=self.s.llm_model, format="json",
             options={"temperature": 0, "num_ctx": 4096, "num_predict": 200},
             messages=[{"role": "user",
@@ -144,7 +146,7 @@ class GraphRAG:
 
     def _fit(self, st: State):
         """Does the quoted sentence give the specific thing asked? Extraction prompt plus unit check."""
-        r = ollama.chat(model=self.s.llm_model, options={"temperature": 0, "num_predict": 24},
+        r = llm_chat(model=self.s.llm_model, options={"temperature": 0, "num_predict": 24},
                         messages=[{"role": "user",
                                         "content": EXTRACT.format(question=st["question"], quote=st["quote"])}])
         direct = not r["message"]["content"].strip().upper().startswith("NONE")
@@ -155,7 +157,7 @@ class GraphRAG:
         return {"answer": "", "decision": "", "fit_blocked": True}
 
     def _rewrite(self, st: State):
-        msg = ollama.chat(model=self.s.llm_model, options={"temperature": 0, "num_predict": 40},
+        msg = llm_chat(model=self.s.llm_model, options={"temperature": 0, "num_predict": 40},
                           messages=[{"role": "user", "content": REWRITE + st["question"]}])
         q = msg["message"]["content"].strip().strip('"') or st["question"]
         log.info("rewrite -> %r", q)
@@ -195,11 +197,23 @@ class GraphRAG:
         return g.compile()
 
     def ask(self, question: str) -> State:
-        return self.graph.invoke({
+        question = " ".join((question or "").split())
+        state = {
             "question": question, "query": question, "hits": [], "top1": 0.0, "tries": 0,
             "said": False, "quote_ok": False, "quote": "", "answer": "", "decision": "",
-            "fit_blocked": False,
-        })
+            "fit_blocked": False, "related": "", "partial": "",
+        }
+        if not question:
+            return {**state, "decision": "invalid", "answer": "Please enter a question."}
+        if len(question) > MAX_Q:
+            return {**state, "decision": "invalid",
+                    "answer": f"Question is too long (max {MAX_Q} characters)."}
+        try:
+            return self.graph.invoke(state)
+        except LLMUnavailable:
+            log.error("LLM unavailable after retries")
+            return {**state, "decision": "error",
+                    "answer": "The language model is not responding. Check that Ollama is running and try again."}
 
 
 if __name__ == "__main__":

@@ -41,7 +41,7 @@ def fake_chat(monkeypatch, judge=None, fit="8 days"):
             return {"message": {"content": json.dumps(judge or {})}}
         return {"message": {"content": fit}}
 
-    monkeypatch.setattr(G.ollama, "chat", chat)
+    monkeypatch.setattr(G, "llm_chat", chat)
     return calls
 
 
@@ -110,6 +110,21 @@ def test_judge_refusal_gives_partial(monkeypatch):
 def test_bad_json_from_judge_abstains(monkeypatch):
     def chat(model=None, messages=None, **kw):
         return {"message": {"content": "not json"}}
-    monkeypatch.setattr(G.ollama, "chat", chat)
+    monkeypatch.setattr(G, "llm_chat", chat)
     st = make_graph([hit()]).ask("How many days of annual leave do employees get?")
     assert st["decision"] == "abstain"
+
+def test_empty_and_long_questions(monkeypatch):
+    calls = fake_chat(monkeypatch)
+    g = make_graph([hit()])
+    assert g.ask("   ")["decision"] == "invalid"
+    assert g.ask("x" * 501)["decision"] == "invalid"
+    assert calls == []
+
+
+def test_llm_down_gives_error_state(monkeypatch):
+    def chat(**kw):
+        raise G.LLMUnavailable("down")
+    monkeypatch.setattr(G, "llm_chat", chat)
+    st = make_graph([hit()]).ask("How many days of annual leave do employees get?")
+    assert st["decision"] == "error" and "Ollama" in st["answer"]

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from .llm import llm_chat
 
 from typing import Protocol
 
@@ -29,7 +30,7 @@ class OllamaGenerator:
         self.model = settings.llm_model
 
     def generate(self, question: str, hits: list[Hit]) -> str:
-        resp = ollama.chat(
+        resp = llm_chat(
             model=self.model,
             messages=[
                 {"role": "system", "content": SYSTEM},
