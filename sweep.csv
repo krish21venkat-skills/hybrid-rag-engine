@@ -1,0 +1,73 @@
+question,answerable,found,top1,gap,cov,oov,split
+How many annual leave days can be carried forward?,True,True,0.9232,0.636,1.0,0,hold
+When do unused carried-forward leave days lapse?,True,True,0.8786,0.7532,1.0,0,hold
+How long is paternity leave?,True,True,0.9985,0.9054,1.0,0,tune
+What is the hotel cost limit in metro cities?,True,True,0.2257,0.2226,0.8,1,tune
+How often must passwords be changed?,True,True,0.8311,0.7674,1.0,0,hold
+Within how many hours must a lost device be reported?,True,True,0.9748,0.9588,1.0,0,tune
+What does error E-4021 mean?,True,True,0.9998,0.9991,1.0,0,tune
+What is the API rate limit per minute?,True,True,0.9957,0.9931,1.0,0,tune
+When does the automatic rollback trigger after a release?,True,True,0.6061,0.2415,0.6,0,tune
+How long are access tokens valid?,True,True,0.8915,0.8896,1.0,0,tune
+How many days of unpaid leave can a contractor take?,True,True,0.9819,0.878,0.8,0,tune
+What is the hotel limit for contractors?,True,True,0.5512,0.4276,0.667,0,hold
+Which days must contractors be on site?,True,True,0.8154,0.7345,1.0,0,tune
+What is the hotel limit for employees in metro cities?,True,True,0.0248,0.0241,1.0,0,hold
+How many vacation days do staff get each year?,True,True,0.2966,0.2404,0.6,2,tune
+What does VPN error VPN-707 mean?,True,True,0.9955,0.995,1.0,0,hold
+How long is an account locked after failed sign-in attempts?,True,True,0.9989,0.9937,1.0,0,tune
+What are the helpdesk support hours?,True,True,0.9985,0.9824,1.0,0,hold
+What is the accuracy class of the SM-300?,True,True,0.9049,0.885,1.0,0,tune
+What does display code E07 mean?,True,True,0.9973,0.9969,1.0,0,tune
+How many days of readings can the meter store offline?,True,True,0.9413,0.9394,0.8,1,hold
+How quickly must on-call acknowledge a SEV1?,True,True,0.9997,0.8762,0.8,0,tune
+When must the post-incident review be held?,True,True,0.9974,0.9556,1.0,0,tune
+At what error rate does the pipeline automatically roll back a release?,True,True,0.9995,0.0083,1.0,0,hold
+What is the CEO's salary?,False,False,0.0031,0.003,0.0,2,tune
+What is the company's stock price today?,False,False,0.0016,0.0014,0.25,3,tune
+Who won the cricket world cup?,False,False,0.0,0.0,0.0,4,tune
+what happens to my leave if i join in the middle of the month,True,True,0.1323,0.0099,0.4,3,tune
+do i get a day off if a holiday lands on a saturday,True,True,0.5013,0.1686,0.4,1,hold
+who do i tell if i'm sick and by what time,True,True,0.5717,0.1381,0.333,1,tune
+how early should i apply for time off,True,True,0.9011,0.2199,0.0,2,hold
+how many hours must i be online on chat during the day,True,True,0.3956,0.0125,0.833,1,tune
+what happens if my review rating is poor,True,True,0.0174,0.015,0.5,2,tune
+which flights can i book above economy,True,True,0.1887,0.1885,0.75,1,tune
+app keeps saying my token is expired what do i do,True,True,0.51,0.5077,0.4,3,tune
+what does it mean when the meter shows no signal,True,True,0.4256,0.4228,0.5,0,tune
+when do i lose access after my contract finishes,True,True,0.9919,0.0561,0.6,2,tune
+How long can a contractor engagement last?,True,True,0.8538,0.8427,0.667,0,hold
+When must contractor invoices be submitted?,True,True,0.9963,0.9828,1.0,0,hold
+How long is maternity leave for the third child?,True,True,0.9974,0.9716,1.0,0,tune
+What is the reporting interval of the SM-200?,True,True,0.9797,0.5068,1.0,0,tune
+What is the operating temperature range of the SM-300?,True,True,0.9851,0.981,0.75,1,tune
+How many orders can a batch request contain?,True,True,0.9581,0.9574,0.75,1,tune
+How many times does the service retry when the payment gateway is down?,True,True,0.9877,0.9307,0.833,1,tune
+How soon are contractor expense claims paid?,True,True,0.9958,0.7963,0.8,1,tune
+How often are laptops refreshed?,True,True,0.9516,0.9496,1.0,0,tune
+What is the extension for critical outages?,True,True,0.9819,0.9794,1.0,0,tune
+How many days of bereavement leave are allowed?,False,False,0.1057,0.0412,0.5,2,tune
+What is the policy on sabbatical leave?,False,False,0.2402,0.2061,0.667,1,tune
+How many casual leave days do employees get?,False,False,0.1323,0.0959,0.75,1,tune
+What is the compensation for overtime work?,False,False,0.0159,0.0091,0.333,2,hold
+What is the daily allowance for international business travel?,False,False,0.0874,0.0842,0.4,3,tune
+Can employees claim reimbursement for home internet?,False,False,0.0018,0.0015,0.6,2,tune
+What is the notice period for employees who resign?,False,False,0.0079,0.0033,0.25,3,tune
+What is the work-from-home equipment allowance?,False,False,0.0026,0.0016,0.5,2,hold
+What is the retention period for company emails?,False,False,0.0129,0.0076,0.5,2,tune
+What is the contractor rate of pay per hour?,False,False,0.0371,0.0214,0.6,1,tune
+How do I get a replacement for a damaged Orion meter?,False,False,0.0054,0.0033,0.75,1,hold
+What is the price of the Orion SM-300?,False,False,0.0603,0.048,0.667,1,hold
+Does the Orders API support webhooks?,False,False,0.6622,0.6596,0.5,1,tune
+Which PostgreSQL version does the Orders API use?,False,False,0.9925,0.9913,0.8,0,tune
+Who is the current incident commander on call?,False,False,0.1815,0.0949,0.75,1,hold
+What is the capital of Australia?,False,False,0.0001,0.0,0.0,2,tune
+Who is the CEO of Acme Corp?,False,False,0.0112,0.0088,0.667,1,hold
+What is the weather in Bangalore today?,False,False,0.0004,0.0003,0.0,3,tune
+Write a Python function to reverse a string.,False,False,0.0002,0.0001,0.2,4,tune
+What is the Wi-Fi password for the guest network?,False,False,0.0029,0.0005,0.667,1,tune
+What time is the company picnic?,False,False,0.0083,0.0066,0.333,1,tune
+How do I make filter coffee?,False,False,0.0001,0.0,0.0,2,tune
+What is the exchange rate of USD to INR?,False,False,0.0003,0.0,0.25,3,tune
+Who won the last cricket world cup?,False,False,0.0,0.0,0.0,4,tune
+What is on the cafeteria menu today?,False,False,0.0002,0.0001,0.333,2,hold

@@ -1,153 +1,139 @@
 # hybrid-rag-engine
 
-A hybrid Retrieval-Augmented Generation (RAG) pipeline in pure Python. It focuses on retrieval quality, runs fully locally with no API keys, and ships with an evaluation harness so every tuning change is measured.
+A local, CPU-only hybrid RAG pipeline in Python whose main job is **refusing questions the documents cannot answer**.
+It is a hands-on practice project built to production-style standards (eval gates, a frozen test set, retries, tests), not a live service.
 
-## Features
+The corpus is 7 small fictional documents (leave rules, company policy, contractor policy, IT FAQ, product specs, tech notes, incident runbook), 25 chunks in total.
 
-- **Structure-aware chunking:** Markdown headings and file names are kept as context in every chunk
-- **Hybrid retrieval:** dense vectors (ChromaDB) combined with BM25 keyword search
-- **Reciprocal Rank Fusion (RRF):** merges both rankings without needing comparable scores
-- **Cross-encoder reranking** with a score threshold, so weak matches are dropped and the system can say "I don't know"
-- **Grounded answers** with numbered source citations, using a local LLM via Ollama
-- **Evaluation harness:** hit@k, MRR and abstain rate, with answer-text checks and out-of-scope questions
-- **Threshold calibration:** picks the rerank cut-off from your eval set
-- **Interactive chat:** shows retrieved chunks and scores for live testing
-- **Pluggable generator interface** for swapping Ollama for Bedrock or Azure OpenAI
-- **Lightweight tracing:** per-stage timings and one summary log line per query
+## How it works
 
-## Architecture
-
-```mermaid
-flowchart LR
-    A[Documents<br/>PDF / MD / TXT] --> B[Clean + chunk]
-    B --> C[Dedupe + embed]
-    C --> D[(ChromaDB)]
-    Q[Question] --> E[Dense search]
-    Q --> F[BM25 search]
-    D --> E
-    D --> F
-    E --> G[RRF fusion]
-    F --> G
-    G --> H[Cross-encoder rerank]
-    H --> I[Score filter]
-    I --> J[LLM answer with citations]
+```
+question
+   |
+   v
+[retrieve]  dense (embeddings) + BM25  ->  RRF fusion  ->  cross-encoder rerank  ->  top 5
+   |
+   v
+[gate]      best rerank score < abstain_below (0.001)?  -> abstain (no LLM call)
+   |
+   v
+[judge]     LLM returns JSON: answer_found, verbatim quote, answer
+            quote must be ~90% made of words from the context (no-LLM check)
+            "not mentioned" style answers are refused
+   |
+   v
+[fit]       "answer in 8 words or NONE" extraction on the quote
+            + no-LLM unit check (how many -> a count unit, how often -> a frequency, ...)
+   |
+   v
+answer   or   abstain  (with the closest passage shown when the judge refused)
 ```
 
-## Quick start
+Flow is a LangGraph state graph (`src/hybridrag/graph.py`). A query-rewrite node exists but is switched off (it rescued 1 valid question and caused 1 leak).
 
-Requires Python 3.10+ and [Ollama](https://ollama.com).
+Why not just a score threshold? In the sweep, valid questions had top-1 scores as low as 0.0018 while out-of-scope ones reached 0.99, so no threshold separates them. The gate is only a near-zero floor; the real decision is made by the judge and the fit check.
 
-```bash
-git clone https://github.com/krish21venkat-skills/hybrid-rag-engine.git
-cd hybrid-rag-engine
+## Stack
+
+| Part | Choice |
+|---|---|
+| Language / env | Python, venv, VS Code, Windows PowerShell |
+| Embeddings | `BAAI/bge-small-en-v1.5` |
+| Reranker | `BAAI/bge-reranker-base` |
+| Vector store | Chroma |
+| Lexical search | BM25 |
+| Fusion | Reciprocal Rank Fusion (dense 20 + BM25 10 -> fused 20 -> rerank -> keep 5) |
+| LLM | `llama3.1:latest` via Ollama, temperature 0 |
+| Orchestration | LangGraph |
+| Config | `config/settings.yaml`, overridable with `RAG_<KEY>` environment variables |
+| Tests | pytest (23 tests, mocked retriever and LLM, no models needed) |
+
+Frozen settings: chunk 1000 / overlap 150, top_k 5, `abstain_below` 0.001, `max_retries` 0.
+
+## Setup (Windows PowerShell)
+
+```powershell
 python -m venv .venv
-.venv\Scripts\activate          # macOS/Linux: source .venv/bin/activate
-pip install -e ".[dev]"
-ollama pull llama3.1
+.venv\Scripts\Activate.ps1
+pip install -e .
+ollama pull llama3.1:latest
 ```
 
-Put documents (PDF, MD, TXT) in `data/docs/`, then run:
+Run once without `HF_HUB_OFFLINE` so the Hugging Face models download. After that, before every run:
 
-```bash
-hybridrag ingest data/docs                  # first run downloads the embedding and reranker models
-hybridrag search "your question"            # retrieval only
-hybridrag ask "your question"               # full grounded answer
-hybridrag chat                              # interactive Q&A showing sources and scores
-hybridrag eval eval/questions.jsonl         # measure retrieval quality
-hybridrag calibrate eval/questions.jsonl    # recommend a rerank score threshold
+```powershell
+$env:PYTHONUTF8="1"; $env:HF_HUB_OFFLINE="1"; $env:TQDM_DISABLE="1"
 ```
 
-Use `--log DEBUG` for more detail, for example `hybridrag --log DEBUG ask "..."`.
+## Usage
 
-## Configuration
+```powershell
+hybridrag ingest data\docs
+hybridrag search "annual leave carry forward"
+hybridrag ask "How many days of annual leave do employees get?"      # classic pipeline
+hybridrag --log WARNING gask "Can unused sick leave be cashed out?"   # graph pipeline (judge + fit)
+hybridrag chat
+```
 
-Defaults are in `src/hybridrag/config.py`. Override them in `config/settings.yaml`, and override those with `RAG_<NAME>` environment variables (for example `RAG_TOP_K=7`).
-
-| Setting | Default | Purpose |
-|---|---|---|
-| `embed_model` | `BAAI/bge-small-en-v1.5` | Embedding model |
-| `rerank_model` | `BAAI/bge-reranker-base` | Cross-encoder reranker |
-| `llm_model` | `llama3.1:latest` | Ollama model |
-| `chunk_size` / `chunk_overlap` | 1000 / 150 | Characters per chunk / overlap |
-| `top_k` | 5 | Chunks sent to the LLM |
-| `min_rerank_score` | 0.05 | Drop matches scoring below this |
-
-Changing the chunking or embedding settings requires deleting `storage/` and re-ingesting.
+On a CPU, an answered question takes about 30 to 40 s (the judge call dominates); a refusal at the gate is much faster.
 
 ## Evaluation
 
-Each line of `eval/questions.jsonl` is a test case:
-
-```json
-{"question": "What is the hotel limit for contractors?", "source": "ContractorPolicy.txt", "answer_contains": "3,500"}
-{"question": "What is the CEO's salary?", "source": null}
+```powershell
+python scripts\check_eval.py eval\X.jsonl [--freeze]     # labels, duplicates, trap overlap (no models)
+python scripts\run_eval.py eval\X.jsonl [--limit N] [--set-baseline]
 ```
 
-A question counts as a hit only if a chunk from the right file is retrieved **and** it contains the expected answer text. Questions with `"source": null` are out of scope, so the correct behaviour is returning no results.
+`run_eval.py` caches results by a fingerprint of settings plus `graph.py`, reports leaks per type, latency, and prints a GATE line: leaks must not rise and correct must not drop against the saved baseline. After re-ingest or chunking changes: `Remove-Item -Recurse reports\.cache`.
+
+| Set | Valid / out-of-scope | Role |
+|---|---|---|
+| `dev.jsonl` | 37 / 41 | tuned against |
+| `dev2.jsonl` | 6 / 5 | past failures, for testing fixes |
+| `frozen.jsonl` | 48 / 50 | hand-written, hash-frozen, no longer unseen |
+| `frozen2.jsonl` | 20 / 20 | fresh, hash-frozen, run once |
+
+Row format: `{"question", "source", "answer_contains"}` for valid rows, `{"question", "source": null, "type": "trap|messy|offdomain"}` for out-of-scope rows.
 
 ### Results
 
-24 answerable and 3 out-of-scope questions:
+| Set | Correct (valid) | Leaks (out-of-scope) |
+|---|---|---|
+| dev | 33/37 | 2/41 |
+| frozen (rerun, no tuning) | 44/48 | 5/50 (trap 5/30, messy 0/8, off-domain 0/12) |
+| frozen2 (fresh) | 18/20 | 0/20 (trap 0/10, messy 0/4, off-domain 0/6) |
 
-| Run | Change | hit@5 | MRR | Abstain rate |
-|---|---|---|---|---|
-| 1 | Baseline (chunk 1000/150, `min_rerank_score` 0.05) | 0.958 | 0.917 | 1.0 |
-| 2 | chunk 1000/150, threshold 0.02 | 1.000 | 0.958 | 1.0 |
+How to read these: dev numbers are tuned and say little about generalisation. frozen2 is the cleanest number, but 20 per side is small, so 0 leaks only means the true rate is probably low, not zero. frozen2 was written for the final test and its traps are easier than the old frozen set's.
 
-The single miss in run 1 was a valid question ("hotel limit for employees in metro cities") whose chunk scored below the cut-off and was rejected. Inspecting the scores with the threshold set to 0 showed this, and the run 2 change fixed it without letting any out-of-scope question through.
+## Known limitations
 
-**Caveat:** the out-of-scope set has only 3 questions, so the abstain rate is indicative, not conclusive.
+- **Near-domain leaks:** 5 of 30 trap questions on `frozen.jsonl` return an adjacent fact with confidence (for example the token validity when asked for the refresh endpoint timeout).
+- **Table rows and fragments:** a quote without its subject (a markdown table row such as the SM-300 warranty, or "This means your device certificate has expired") can be refused by the fit check.
+- **Negation questions** ("can sick leave be cashed out?") are refused by the judge.
+- **English only:** Hinglish and heavy slang questions score near zero in retrieval.
+- **Latency:** CPU only, so tens of seconds per answered question.
 
-### Threshold calibration
-
-A fixed cut-off either blocks valid answers or lets out-of-scope questions through. `hybridrag calibrate` scores every eval question with the threshold off and recommends the value that best separates correct chunks from out-of-scope matches. If the two score ranges overlap, no threshold can fix it, and chunking needs work instead.
-
-## Project structure
+## Layout
 
 ```
-hybrid-rag-engine/
-├── pyproject.toml
-├── config/settings.yaml
-├── data/docs/                 # sample documents (fictional)
-├── eval/questions.jsonl
-├── docs/RUNBOOK.md            # runbook and project notes
-├── src/hybridrag/
-│   ├── config.py              # settings: defaults < YAML < env vars
-│   ├── loaders.py             # PDF / MD / TXT loading
-│   ├── chunking.py            # cleaning + structure-aware chunking
-│   ├── embeddings.py          # sentence-transformers wrapper
-│   ├── store.py               # ChromaDB vector store
-│   ├── retrieval.py           # dense + BM25 + RRF + rerank
-│   ├── generation.py          # Generator interface + Ollama implementation
-│   ├── pipeline.py            # wires the stages together
-│   ├── evaluate.py            # hit@k, MRR, abstain rate
-│   ├── calibrate.py           # threshold calibration
-│   ├── logging_utils.py
-│   └── cli.py                 # hybridrag command
-└── tests/
+config/settings.yaml
+data/docs/                 7 fictional documents
+eval/                      JSONL question sets
+reports/                   baselines, frozen hashes (.cache is ignored)
+scripts/                   run_eval.py check_eval.py inspect_failures.py (+ older experiment scripts)
+src/hybridrag/             config chunking embeddings store retrieval generation pipeline
+                           graph llm evaluate logging_utils cli
+tests/                     test_chunking test_config test_graph test_llm
 ```
 
-The core library contains no cloud or UI code. Integrations belong in thin entry points that call `RAGPipeline().ask(...)`.
+## Robustness and tracing
 
-## Technologies
-
-Python, ChromaDB, sentence-transformers (BGE embedding and reranker models), rank_bm25, LangChain text splitters, pypdf, Ollama (Llama 3.1), PyYAML, pytest.
-
-## Roadmap
-
-- [x] Hybrid retrieval, reranking and an eval harness
-- [x] Eval-driven threshold calibration
-- [ ] LangGraph agentic flow (query rewriting, retry, fallback)
-- [ ] Bedrock and Azure OpenAI generators
-- [ ] FastAPI endpoint for HTTP and UiPath integration
-- [ ] Parent-child chunking and metadata filters
+- `llm.py` wraps every Ollama call: 180 s timeout, 2 retries with backoff, and a clear error state instead of a traceback. Model-missing errors fail fast.
+- `ask` rejects empty questions and questions over 500 characters.
+- Every query gets a trace id, and each stage logs one greppable line: `trace=a1b2c3d4 stage=judge ms=22400 said=False quote_ok=False`.
 
 ## Tests
 
-```bash
+```powershell
 pytest -q
 ```
-
-## License
-
-MIT

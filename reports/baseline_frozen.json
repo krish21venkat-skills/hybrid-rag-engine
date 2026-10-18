@@ -1,6 +1,6 @@
 {
  "file": "eval\\frozen.jsonl",
- "fingerprint": "de9b44b532",
+ "fingerprint": "467019b4d6",
  "settings": {
   "embed_model": "BAAI/bge-small-en-v1.5",
   "rerank_model": "BAAI/bge-reranker-base",
@@ -14,15 +14,15 @@
   "top_k": 5,
   "min_rerank_score": 0.05,
   "rrf_k": 60,
-  "abstain_below": 0.01,
+  "abstain_below": 0.001,
   "max_retries": 0,
   "db_path": "storage\\chroma",
   "collection": "docs"
  },
  "summary": {
   "n_valid": 48,
-  "valid_answered": 42,
-  "valid_correct": 42,
+  "valid_answered": 45,
+  "valid_correct": 44,
   "n_oos": 50,
   "leaks": 5,
   "errors": 0,
@@ -31,20 +31,20 @@
    "messy": "0/8",
    "offdomain": "0/12"
   },
-  "answer_p50_s": 37.2,
-  "answer_p95_s": 53.9,
-  "abstain_p50_s": 21.2
+  "answer_p50_s": 34.2,
+  "answer_p95_s": 44.4,
+  "abstain_p50_s": 22.0
  },
  "rows": [
   {
    "question": "If I join on the 20th, when does my leave start building up?",
    "decision": "answer",
-   "answer": "The following month",
-   "quote": "New joiners who start after the 15th of a month begin accruing from the following month.",
+   "answer": "2 days after joining",
+   "quote": "Leave accrues at 2 days per month of service.",
    "top1": 0.0914,
    "fit_blocked": false,
    "error": "",
-   "seconds": 67.7
+   "seconds": 34.2
   },
   {
    "question": "how many leave days do you earn each month",
@@ -54,7 +54,7 @@
    "top1": 0.9822,
    "fit_blocked": false,
    "error": "",
-   "seconds": 38.4
+   "seconds": 39.6
   },
   {
    "question": "What is the deadline for using carried-over annual leave?",
@@ -64,7 +64,7 @@
    "top1": 0.0875,
    "fit_blocked": false,
    "error": "",
-   "seconds": 42.8
+   "seconds": 30.7
   },
   {
    "question": "Do I need a doctor's certificate for a 3-day sick absence?",
@@ -74,7 +74,7 @@
    "top1": 0.0283,
    "fit_blocked": false,
    "error": "",
-   "seconds": 37.0
+   "seconds": 29.7
   },
   {
    "question": "How long after the baby is born can paternity leave be taken?",
@@ -84,17 +84,17 @@
    "top1": 0.9918,
    "fit_blocked": false,
    "error": "",
-   "seconds": 49.3
+   "seconds": 29.6
   },
   {
    "question": "Who has to sign off on a 12-day leave request?",
-   "decision": "abstain",
-   "answer": "I couldn't find this in the documents.",
-   "quote": "",
+   "decision": "answer",
+   "answer": "The department head and the line manager",
+   "quote": "Requests longer than 10 consecutive days require approval from the department head in addition to the line manager.",
    "top1": 0.005,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.3
+   "seconds": 45.2
   },
   {
    "question": "How is a no-show of more than three days treated?",
@@ -104,7 +104,7 @@
    "top1": 0.9761,
    "fit_blocked": false,
    "error": "",
-   "seconds": 42.6
+   "seconds": 42.1
   },
   {
    "question": "What are the standard office hours?",
@@ -114,7 +114,7 @@
    "top1": 0.4333,
    "fit_blocked": false,
    "error": "",
-   "seconds": 53.9
+   "seconds": 31.3
   },
   {
    "question": "Who must approve a permanent work-from-home arrangement?",
@@ -124,7 +124,7 @@
    "top1": 0.064,
    "fit_blocked": false,
    "error": "",
-   "seconds": 50.5
+   "seconds": 44.4
   },
   {
    "question": "What is the daily meal allowance on business trips?",
@@ -134,7 +134,7 @@
    "top1": 0.2176,
    "fit_blocked": false,
    "error": "",
-   "seconds": 37.2
+   "seconds": 37.3
   },
   {
    "question": "What receipts are needed when claiming expenses?",
@@ -144,7 +144,7 @@
    "top1": 0.066,
    "fit_blocked": false,
    "error": "",
-   "seconds": 27.4
+   "seconds": 27.3
   },
   {
    "question": "Where do I report discrimination?",
@@ -154,7 +154,7 @@
    "top1": 0.4241,
    "fit_blocked": false,
    "error": "",
-   "seconds": 54.8
+   "seconds": 41.2
   },
   {
    "question": "What disk protection must work laptops have?",
@@ -164,7 +164,7 @@
    "top1": 0.1782,
    "fit_blocked": false,
    "error": "",
-   "seconds": 30.0
+   "seconds": 30.3
   },
   {
    "question": "In which months are performance reviews held?",
@@ -174,7 +174,7 @@
    "top1": 0.9114,
    "fit_blocked": false,
    "error": "",
-   "seconds": 39.5
+   "seconds": 38.9
   },
   {
    "question": "What rating scale is used in reviews?",
@@ -184,7 +184,7 @@
    "top1": 0.4853,
    "fit_blocked": false,
    "error": "",
-   "seconds": 26.1
+   "seconds": 26.4
   },
   {
    "question": "Can a contract be extended more than once?",
@@ -194,7 +194,7 @@
    "top1": 0.1035,
    "fit_blocked": false,
    "error": "",
-   "seconds": 46.7
+   "seconds": 39.1
   },
   {
    "question": "How many hours a week do contractors work?",
@@ -204,7 +204,7 @@
    "top1": 0.9396,
    "fit_blocked": false,
    "error": "",
-   "seconds": 32.0
+   "seconds": 31.9
   },
   {
    "question": "how much notice before taking unpaid leave as a contractor",
@@ -214,7 +214,7 @@
    "top1": 0.9511,
    "fit_blocked": false,
    "error": "",
-   "seconds": 40.5
+   "seconds": 40.7
   },
   {
    "question": "Are contractors reimbursed for meals?",
@@ -224,7 +224,7 @@
    "top1": 0.9826,
    "fit_blocked": false,
    "error": "",
-   "seconds": 51.5
+   "seconds": 39.7
   },
   {
    "question": "How long after approving an invoice is the contractor paid?",
@@ -234,7 +234,7 @@
    "top1": 0.9958,
    "fit_blocked": false,
    "error": "",
-   "seconds": 41.4
+   "seconds": 41.7
   },
   {
    "question": "When is a contractor's system access switched off?",
@@ -244,7 +244,7 @@
    "top1": 0.1782,
    "fit_blocked": false,
    "error": "",
-   "seconds": 41.8
+   "seconds": 41.9
   },
   {
    "question": "What database does the Orders API store its data in?",
@@ -254,17 +254,17 @@
    "top1": 0.999,
    "fit_blocked": false,
    "error": "",
-   "seconds": 32.3
+   "seconds": 25.5
   },
   {
    "question": "What response time should 95% of requests meet?",
-   "decision": "abstain",
-   "answer": "I couldn't find this in the documents.",
-   "quote": "",
+   "decision": "answer",
+   "answer": "800 milliseconds",
+   "quote": "Each request is expected to complete within 800 milliseconds at the 95th percentile.",
    "top1": 0.0018,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.5
+   "seconds": 38.2
   },
   {
    "question": "What HTTP status comes back for an expired token?",
@@ -274,7 +274,7 @@
    "top1": 0.9568,
    "fit_blocked": false,
    "error": "",
-   "seconds": 28.6
+   "seconds": 29.1
   },
   {
    "question": "What happens when I go over the API rate limit?",
@@ -284,7 +284,7 @@
    "top1": 0.9954,
    "fit_blocked": false,
    "error": "",
-   "seconds": 32.0
+   "seconds": 31.1
   },
   {
    "question": "How many requests per minute can batch endpoints take?",
@@ -294,7 +294,7 @@
    "top1": 0.9997,
    "fit_blocked": false,
    "error": "",
-   "seconds": 28.6
+   "seconds": 29.2
   },
   {
    "question": "What does E-4021 usually point to?",
@@ -304,7 +304,7 @@
    "top1": 0.9677,
    "fit_blocked": true,
    "error": "",
-   "seconds": 39.5
+   "seconds": 40.5
   },
   {
    "question": "Who approves hotfixes outside the release schedule?",
@@ -314,7 +314,7 @@
    "top1": 0.9966,
    "fit_blocked": false,
    "error": "",
-   "seconds": 46.8
+   "seconds": 44.3
   },
   {
    "question": "How do I get the VPN client?",
@@ -324,7 +324,7 @@
    "top1": 0.4123,
    "fit_blocked": false,
    "error": "",
-   "seconds": 39.2
+   "seconds": 34.4
   },
   {
    "question": "How long does a new VPN certificate take to issue?",
@@ -334,7 +334,7 @@
    "top1": 0.9138,
    "fit_blocked": false,
    "error": "",
-   "seconds": 23.4
+   "seconds": 24.3
   },
   {
    "question": "How early are accounts created for new joiners?",
@@ -344,7 +344,7 @@
    "top1": 0.6422,
    "fit_blocked": false,
    "error": "",
-   "seconds": 41.1
+   "seconds": 38.3
   },
   {
    "question": "Which category do I use to request a monitor?",
@@ -354,7 +354,7 @@
    "top1": 0.9931,
    "fit_blocked": false,
    "error": "",
-   "seconds": 37.7
+   "seconds": 28.6
   },
   {
    "question": "Who handles an outage in the middle of the night?",
@@ -364,7 +364,7 @@
    "top1": 0.0662,
    "fit_blocked": false,
    "error": "",
-   "seconds": 34.9
+   "seconds": 34.6
   },
   {
    "question": "What kind of meter is the SM-300?",
@@ -374,7 +374,7 @@
    "top1": 0.9099,
    "fit_blocked": false,
    "error": "",
-   "seconds": 26.6
+   "seconds": 26.9
   },
   {
    "question": "What mounting does the SM-200 use?",
@@ -384,7 +384,7 @@
    "top1": 0.9693,
    "fit_blocked": false,
    "error": "",
-   "seconds": 27.1
+   "seconds": 26.4
   },
   {
    "question": "What does display code E12 mean?",
@@ -394,17 +394,17 @@
    "top1": 0.9084,
    "fit_blocked": false,
    "error": "",
-   "seconds": 30.4
+   "seconds": 30.6
   },
   {
    "question": "How is the meter data protected in transit?",
-   "decision": "abstain",
-   "answer": "I couldn't find this in the documents.",
-   "quote": "",
+   "decision": "answer",
+   "answer": "AES-256 encryption",
+   "quote": "Data is encrypted with AES-256 and sent to the head-end system every reporting interval.",
    "top1": 0.0027,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.5
+   "seconds": 32.7
   },
   {
    "question": "Who is allowed to install the meter?",
@@ -414,7 +414,7 @@
    "top1": 0.0995,
    "fit_blocked": false,
    "error": "",
-   "seconds": 31.9
+   "seconds": 30.1
   },
   {
    "question": "What is a SEV3 incident?",
@@ -424,7 +424,7 @@
    "top1": 0.9266,
    "fit_blocked": false,
    "error": "",
-   "seconds": 31.6
+   "seconds": 25.8
   },
   {
    "question": "Who owns communication during an incident?",
@@ -434,7 +434,7 @@
    "top1": 0.9888,
    "fit_blocked": false,
    "error": "",
-   "seconds": 31.4
+   "seconds": 31.7
   },
   {
    "question": "How soon must an incident commander be assigned for SEV1?",
@@ -444,7 +444,7 @@
    "top1": 0.9996,
    "fit_blocked": false,
    "error": "",
-   "seconds": 27.5
+   "seconds": 28.0
   },
   {
    "question": "When should I roll back after a release?",
@@ -454,7 +454,7 @@
    "top1": 0.9305,
    "fit_blocked": false,
    "error": "",
-   "seconds": 44.3
+   "seconds": 44.7
   },
   {
    "question": "How often are post-incident action items reviewed?",
@@ -464,7 +464,7 @@
    "top1": 0.9952,
    "fit_blocked": false,
    "error": "",
-   "seconds": 41.3
+   "seconds": 34.8
   },
   {
    "question": "whats the hotel cap for contractors per night",
@@ -474,7 +474,7 @@
    "top1": 0.988,
    "fit_blocked": false,
    "error": "",
-   "seconds": 41.8
+   "seconds": 44.3
   },
   {
    "question": "how long can i keep my laptop after my contract ends",
@@ -484,7 +484,7 @@
    "top1": 0.9199,
    "fit_blocked": false,
    "error": "",
-   "seconds": 36.9
+   "seconds": 37.4
   },
   {
    "question": "do i get paid if i take a sick day as contractor",
@@ -494,7 +494,7 @@
    "top1": 0.9352,
    "fit_blocked": false,
    "error": "",
-   "seconds": 37.4
+   "seconds": 38.7
   },
   {
    "question": "laptop got stolen who do i tell",
@@ -504,7 +504,7 @@
    "top1": 0.0193,
    "fit_blocked": false,
    "error": "",
-   "seconds": 36.7
+   "seconds": 37.6
   },
   {
    "question": "vpn wont connect says 707",
@@ -514,7 +514,7 @@
    "top1": 0.9598,
    "fit_blocked": true,
    "error": "",
-   "seconds": 44.3
+   "seconds": 44.9
   },
   {
    "question": "What is the screen size of the SM-300 display?",
@@ -524,7 +524,7 @@
    "top1": 0.0099,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.0
+   "seconds": 16.6
   },
   {
    "question": "What is the IP rating of the Orion meter?",
@@ -534,7 +534,7 @@
    "top1": 0.034,
    "fit_blocked": false,
    "error": "",
-   "seconds": 33.0
+   "seconds": 19.9
   },
   {
    "question": "How much does the SM-300 weigh?",
@@ -544,7 +544,7 @@
    "top1": 0.0201,
    "fit_blocked": false,
    "error": "",
-   "seconds": 17.8
+   "seconds": 18.3
   },
   {
    "question": "What are the physical dimensions of the SM-300?",
@@ -554,7 +554,7 @@
    "top1": 0.0127,
    "fit_blocked": true,
    "error": "",
-   "seconds": 21.3
+   "seconds": 22.1
   },
   {
    "question": "Which software version do the meters run?",
@@ -564,7 +564,7 @@
    "top1": 0.0044,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.4
+   "seconds": 19.1
   },
   {
    "question": "Does the SM-200 support Wi-Fi?",
@@ -574,7 +574,7 @@
    "top1": 0.0554,
    "fit_blocked": false,
    "error": "",
-   "seconds": 21.8
+   "seconds": 17.8
   },
   {
    "question": "Which mobile operators does the meter work with in India?",
@@ -584,7 +584,7 @@
    "top1": 0.0125,
    "fit_blocked": false,
    "error": "",
-   "seconds": 27.9
+   "seconds": 28.4
   },
   {
    "question": "What is the maximum length of the customer_id field?",
@@ -594,7 +594,7 @@
    "top1": 0.0385,
    "fit_blocked": false,
    "error": "",
-   "seconds": 25.5
+   "seconds": 25.6
   },
   {
    "question": "What is the base URL of the Orders API?",
@@ -604,7 +604,7 @@
    "top1": 0.7101,
    "fit_blocked": false,
    "error": "",
-   "seconds": 21.0
+   "seconds": 21.7
   },
   {
    "question": "What is the Redis eviction policy used for caching?",
@@ -614,7 +614,7 @@
    "top1": 0.8836,
    "fit_blocked": false,
    "error": "",
-   "seconds": 21.7
+   "seconds": 22.1
   },
   {
    "question": "What is the timeout of the refresh endpoint?",
@@ -634,7 +634,7 @@
    "top1": 0.9117,
    "fit_blocked": false,
    "error": "",
-   "seconds": 21.2
+   "seconds": 22.0
   },
   {
    "question": "How long does a SEV4 defect take to fix?",
@@ -644,7 +644,7 @@
    "top1": 0.0345,
    "fit_blocked": false,
    "error": "",
-   "seconds": 27.0
+   "seconds": 27.1
   },
   {
    "question": "What is the phone number to escalate a SEV1?",
@@ -654,7 +654,7 @@
    "top1": 0.0337,
    "fit_blocked": false,
    "error": "",
-   "seconds": 26.7
+   "seconds": 27.8
   },
   {
    "question": "How many days of paid leave do interns get?",
@@ -664,7 +664,7 @@
    "top1": 0.0486,
    "fit_blocked": false,
    "error": "",
-   "seconds": 41.2
+   "seconds": 24.1
   },
   {
    "question": "Do part-time employees get the same 24 days of leave?",
@@ -674,7 +674,7 @@
    "top1": 0.0985,
    "fit_blocked": false,
    "error": "",
-   "seconds": 11.9
+   "seconds": 11.1
   },
   {
    "question": "How many days of leave are given for jury duty?",
@@ -684,7 +684,7 @@
    "top1": 0.0247,
    "fit_blocked": false,
    "error": "",
-   "seconds": 41.4
+   "seconds": 38.8
   },
   {
    "question": "What happens if I miss the 10:00 AM sick leave call to my manager?",
@@ -694,7 +694,7 @@
    "top1": 0.8564,
    "fit_blocked": false,
    "error": "",
-   "seconds": 48.8
+   "seconds": 40.9
   },
   {
    "question": "What is the encashment rate for unused annual leave?",
@@ -704,7 +704,7 @@
    "top1": 0.0462,
    "fit_blocked": false,
    "error": "",
-   "seconds": 39.0
+   "seconds": 15.4
   },
   {
    "question": "Who decides the ratings in performance reviews?",
@@ -714,7 +714,7 @@
    "top1": 0.1578,
    "fit_blocked": false,
    "error": "",
-   "seconds": 26.1
+   "seconds": 26.9
   },
   {
    "question": "What are the exit criteria for the 90-day improvement plan?",
@@ -724,7 +724,7 @@
    "top1": 0.8597,
    "fit_blocked": false,
    "error": "",
-   "seconds": 42.5
+   "seconds": 42.4
   },
   {
    "question": "What is the mileage rate for using a personal car on business trips?",
@@ -734,7 +734,7 @@
    "top1": 0.0006,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.7
+   "seconds": 4.8
   },
   {
    "question": "Can a contractor apply for internal job openings?",
@@ -744,7 +744,7 @@
    "top1": 0.0039,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.6
+   "seconds": 34.3
   },
   {
    "question": "What is the notice period for ending a contract early?",
@@ -754,7 +754,7 @@
    "top1": 0.105,
    "fit_blocked": true,
    "error": "",
-   "seconds": 31.7
+   "seconds": 32.1
   },
   {
    "question": "What is the helpdesk email address?",
@@ -774,7 +774,7 @@
    "top1": 0.0482,
    "fit_blocked": true,
    "error": "",
-   "seconds": 30.0
+   "seconds": 30.4
   },
   {
    "question": "What are the helpdesk hours on public holidays?",
@@ -784,7 +784,7 @@
    "top1": 0.956,
    "fit_blocked": true,
    "error": "",
-   "seconds": 48.8
+   "seconds": 48.5
   },
   {
    "question": "Why was the 25,000 rupee approval limit lowered last year?",
@@ -794,7 +794,7 @@
    "top1": 0.0221,
    "fit_blocked": false,
    "error": "",
-   "seconds": 32.1
+   "seconds": 32.5
   },
   {
    "question": "What was the leave policy before January 2026?",
@@ -804,7 +804,7 @@
    "top1": 0.2942,
    "fit_blocked": false,
    "error": "",
-   "seconds": 35.5
+   "seconds": 28.2
   },
   {
    "question": "What will the leave policy look like in 2027?",
@@ -814,7 +814,7 @@
    "top1": 0.0226,
    "fit_blocked": false,
    "error": "",
-   "seconds": 35.4
+   "seconds": 12.1
   },
   {
    "question": "cn i bring my dog 2 office",
@@ -824,7 +824,7 @@
    "top1": 0.0085,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.8
+   "seconds": 33.6
   },
   {
    "question": "do we get diwali off",
@@ -834,7 +834,7 @@
    "top1": 0.0012,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.4
+   "seconds": 34.4
   },
   {
    "question": "any bonus this yr??",
@@ -854,7 +854,7 @@
    "top1": 0.0145,
    "fit_blocked": false,
    "error": "",
-   "seconds": 33.9
+   "seconds": 18.6
   },
   {
    "question": "wat is the salry for a new grad",
@@ -864,7 +864,7 @@
    "top1": 0.0071,
    "fit_blocked": false,
    "error": "",
-   "seconds": 10.0
+   "seconds": 14.5
   },
   {
    "question": "is there a creche in the office",
@@ -874,7 +874,7 @@
    "top1": 0.753,
    "fit_blocked": false,
    "error": "",
-   "seconds": 23.6
+   "seconds": 22.0
   },
   {
    "question": "can i get a cab after 9pm",
@@ -884,7 +884,7 @@
    "top1": 0.0342,
    "fit_blocked": false,
    "error": "",
-   "seconds": 30.9
+   "seconds": 31.6
   },
   {
    "question": "when is the next team outing",
@@ -894,7 +894,7 @@
    "top1": 0.2922,
    "fit_blocked": false,
    "error": "",
-   "seconds": 36.6
+   "seconds": 26.0
   },
   {
    "question": "What is the speed of light?",
@@ -904,7 +904,7 @@
    "top1": 0.023,
    "fit_blocked": false,
    "error": "",
-   "seconds": 24.0
+   "seconds": 23.1
   },
   {
    "question": "Who painted the Mona Lisa?",
@@ -914,7 +914,7 @@
    "top1": 0.0,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.0
+   "seconds": 4.1
   },
   {
    "question": "How do I make a cup of tea?",
@@ -924,7 +924,7 @@
    "top1": 0.0,
    "fit_blocked": false,
    "error": "",
-   "seconds": 5.3
+   "seconds": 4.5
   },
   {
    "question": "Suggest a name for a pet parrot.",
@@ -934,7 +934,7 @@
    "top1": 0.0,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.9
+   "seconds": 4.2
   },
   {
    "question": "How many players are in a football team?",
@@ -944,7 +944,7 @@
    "top1": 0.0001,
    "fit_blocked": false,
    "error": "",
-   "seconds": 5.8
+   "seconds": 4.5
   },
   {
    "question": "What is 15 percent of 240?",
@@ -954,7 +954,7 @@
    "top1": 0.0003,
    "fit_blocked": false,
    "error": "",
-   "seconds": 9.4
+   "seconds": 4.4
   },
   {
    "question": "Explain photosynthesis in one line.",
@@ -964,7 +964,7 @@
    "top1": 0.0001,
    "fit_blocked": false,
    "error": "",
-   "seconds": 11.3
+   "seconds": 4.6
   },
   {
    "question": "How do I reverse a string in JavaScript?",
@@ -974,7 +974,7 @@
    "top1": 0.0004,
    "fit_blocked": false,
    "error": "",
-   "seconds": 8.3
+   "seconds": 4.1
   },
   {
    "question": "What is the tallest mountain in the world?",
@@ -984,7 +984,7 @@
    "top1": 0.0,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.0
+   "seconds": 4.8
   },
   {
    "question": "Which planet is known as the Red Planet?",
@@ -994,7 +994,7 @@
    "top1": 0.003,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.2
+   "seconds": 15.8
   },
   {
    "question": "What is the capital of Japan?",
@@ -1004,7 +1004,7 @@
    "top1": 0.0001,
    "fit_blocked": false,
    "error": "",
-   "seconds": 4.3
+   "seconds": 4.6
   },
   {
    "question": "What is the freezing point of water in Fahrenheit?",
