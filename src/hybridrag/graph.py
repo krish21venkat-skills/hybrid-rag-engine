@@ -72,6 +72,24 @@ def unit_ok(question: str, text: str) -> bool:
         return False
     return True
 
+STOP = set("a an the of to in on for is are was were be do does did what who when where which how "
+           "i my me we our you your it its and or if can will with by at as from this that "
+           "get much many long often".split())
+
+def closest_sentence(question: str, hits) -> str:
+    """Context sentence sharing the most content words with the question (no LLM). '' if weak."""
+    qw = {w for w in re.findall(r"\w+", question.lower()) if w not in STOP}
+    best, best_n = "", 1                      # need at least 2 shared words
+    for h in hits:
+        for s in re.split(r"(?<=[.!?])\s+|\n+", h.text):
+            s = " ".join(s.split())
+            if len(s) < 20:
+                continue
+            n = len(qw & set(re.findall(r"\w+", s.lower())))
+            if n > best_n:
+                best, best_n = s, n
+    return best
+
 class State(TypedDict):
     question: str
     query: str
@@ -84,7 +102,8 @@ class State(TypedDict):
     answer: str
     decision: str          # "answer" | "abstain"
     fit_blocked: bool
-
+    related: str
+    partial: str
 
 class GraphRAG:
     def __init__(self, settings: Settings | None = None):
@@ -118,8 +137,10 @@ class GraphRAG:
         quote_ok = supported(quote, context)
         ok = said and quote_ok and bool(answer) and not NOT_FOUND.search(answer)
         log.info("judge answer_found=%s quote_ok=%s", said, quote_ok)
+        related = "" if ok else closest_sentence(st["question"], st["hits"])
         return {"said": said, "quote_ok": quote_ok, "quote": quote,
-                "answer": answer if ok else "", "decision": "answer" if ok else ""}
+                "answer": answer if ok else "", "decision": "answer" if ok else "",
+                "related": related}
 
     def _fit(self, st: State):
         """Does the quoted sentence give the specific thing asked? Extraction prompt plus unit check."""
@@ -141,7 +162,10 @@ class GraphRAG:
         return {"query": q, "tries": st["tries"] + 1}
 
     def _abstain(self, st: State):
-        return {"answer": NO_ANSWER, "decision": "abstain"}
+        rel = st.get("related", "")
+        partial = (f'I couldn\'t find a direct answer. The closest passage is: "{rel}" '
+                   f"(it may be about something different, so check the source)." if rel else "")
+        return {"answer": NO_ANSWER, "decision": "abstain", "partial": partial}
 
     # ---- routing ----
     def _route_gate(self, st: State):

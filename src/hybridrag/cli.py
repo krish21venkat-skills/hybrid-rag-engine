@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 
 from .logging_utils import setup_logging
 from .pipeline import RAGPipeline
@@ -36,6 +37,7 @@ def main() -> None:
     sub.add_parser("search").add_argument("query", nargs="+")
     sub.add_parser("ask").add_argument("question", nargs="+")
     sub.add_parser("chat")
+    sub.add_parser("gask").add_argument("question", nargs="+")
     ev = sub.add_parser("eval")
     ev.add_argument("file")
     ev.add_argument("-k", type=int, default=5)
@@ -54,6 +56,11 @@ def main() -> None:
         print(a.text, f"\n\n({len(a.hits)} sources, {a.latency_ms:.0f} ms)")
     elif args.cmd == "chat":
         chat(rag)
+    elif args.cmd == "gask":
+        from .graph import GraphRAG
+        t0 = time.perf_counter()
+        st = GraphRAG().ask(" ".join(args.question))
+        print(st.get("partial") or st["answer"], f"\n\n({(time.perf_counter() - t0) * 1000:.0f} ms)")
     else:
         from .evaluate import evaluate
         print(json.dumps(evaluate(rag, args.file, args.k), indent=2))
