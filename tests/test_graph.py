@@ -128,3 +128,15 @@ def test_llm_down_gives_error_state(monkeypatch):
     monkeypatch.setattr(G, "llm_chat", chat)
     st = make_graph([hit()]).ask("How many days of annual leave do employees get?")
     assert st["decision"] == "error" and "Ollama" in st["answer"]
+
+def test_trace_id_on_every_stage(monkeypatch, caplog):
+    import logging, re
+    fake_chat(monkeypatch, judge={"answer_found": True, "quote": QUOTE, "answer": "10 days"})
+    caplog.set_level(logging.INFO, logger="hybridrag.graph")
+    make_graph([hit()]).ask("How many days of annual leave do employees get?")
+    lines = [r.getMessage() for r in caplog.records if "trace=" in r.getMessage()]
+    ids = {re.search(r"trace=(\w+)", m).group(1) for m in lines}
+    assert len(ids) == 1
+    stages = [re.search(r"stage=(\w+)", m).group(1) for m in lines]
+    assert stages[0] == "start" and stages[-1] == "done"
+    assert {"retrieve", "judge", "fit"} <= set(stages)

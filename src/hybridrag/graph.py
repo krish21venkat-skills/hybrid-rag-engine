@@ -3,6 +3,10 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
+import uuid
+from .logging_utils import stage
+
 from dataclasses import replace
 from typing import TypedDict
 from .llm import LLMUnavailable, llm_chat
@@ -14,6 +18,8 @@ from .config import Settings, load_settings
 from .pipeline import RAGPipeline
 
 MAX_Q = 500
+TRACE_FIELDS = {"retrieve": ("top1",), "judge": ("said", "quote_ok"), "fit": ("fit_blocked",),
+                "rewrite": ("tries",), "abstain": ("decision",)}
 log = logging.getLogger(__name__)
 NO_ANSWER = "I couldn't find this in the documents."
 
@@ -106,6 +112,7 @@ class State(TypedDict):
     fit_blocked: bool
     related: str
     partial: str
+    trace_id: str
 
 class GraphRAG:
     def __init__(self, settings: Settings | None = None):
@@ -181,13 +188,22 @@ class GraphRAG:
     def _route_fit(self, st: State):
         return END if st["decision"] == "answer" else "abstain"
 
+    def _traced(self, name, fn):
+        def run(st):
+            t0 = time.perf_counter()
+            out = fn(st)
+            fields = {k: out[k] for k in TRACE_FIELDS.get(name, ()) if k in out}
+            stage(log, st["trace_id"], name, ms=(time.perf_counter() - t0) * 1000, **fields)
+            return out
+        return run
+
     def _build(self):
         g = StateGraph(State)
-        g.add_node("retrieve", self._retrieve)
-        g.add_node("judge", self._judge)
-        g.add_node("fit", self._fit)
-        g.add_node("rewrite", self._rewrite)
-        g.add_node("abstain", self._abstain)
+        g.add_node("retrieve", self._traced("retrieve", self._retrieve))
+        g.add_node("judge", self._traced("judge", self._judge))
+        g.add_node("fit", self._traced("fit", self._fit))
+        g.add_node("rewrite", self._traced("rewrite", self._rewrite))
+        g.add_node("abstain", self._traced("abstain", self._abstain))
         g.add_edge(START, "retrieve")
         g.add_conditional_edges("retrieve", self._route_gate, ["judge", "rewrite", "abstain"])
         g.add_conditional_edges("judge", self._route_judge, ["fit", "abstain"])
@@ -201,19 +217,24 @@ class GraphRAG:
         state = {
             "question": question, "query": question, "hits": [], "top1": 0.0, "tries": 0,
             "said": False, "quote_ok": False, "quote": "", "answer": "", "decision": "",
-            "fit_blocked": False, "related": "", "partial": "",
+            "fit_blocked": False, "related": "", "partial": "", "trace_id": uuid.uuid4().hex[:8],
         }
         if not question:
             return {**state, "decision": "invalid", "answer": "Please enter a question."}
         if len(question) > MAX_Q:
             return {**state, "decision": "invalid",
                     "answer": f"Question is too long (max {MAX_Q} characters)."}
+        tid, t0 = state["trace_id"], time.perf_counter()
+        stage(log, tid, "start", q=repr(question[:80]))
         try:
-            return self.graph.invoke(state)
+            res = self.graph.invoke(state)
         except LLMUnavailable:
-            log.error("LLM unavailable after retries")
-            return {**state, "decision": "error",
-                    "answer": "The language model is not responding. Check that Ollama is running and try again."}
+            log.error("trace=%s LLM unavailable after retries", tid)
+            res = {**state, "decision": "error",
+                   "answer": "The language model is not responding. Check that Ollama is running and try again."}
+        stage(log, tid, "done", decision=res["decision"], top1=f"{res['top1']:.3f}",
+              total_ms=(time.perf_counter() - t0) * 1000)
+        return res
 
 
 if __name__ == "__main__":
