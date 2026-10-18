@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 import time
 
 import ollama
@@ -17,15 +18,20 @@ class LLMUnavailable(RuntimeError):
 
 
 def llm_chat(retries: int = RETRIES, **kw):
+    kw.setdefault("keep_alive", "30m")              # keep the model loaded between questions
+    opts = dict(kw.get("options") or {})
+    if os.getenv("RAG_NUM_THREAD"):                 # optional CPU thread override
+        opts["num_thread"] = int(os.environ["RAG_NUM_THREAD"])
+    kw["options"] = opts
     last: Exception | None = None
     for i in range(retries + 1):
         try:
             return _client.chat(**kw)
-        except ollama.ResponseError as e:          # e.g. model missing: retrying won't help
+        except ollama.ResponseError as e:           # e.g. model missing: retrying won't help
             if e.status_code in (400, 404):
                 raise LLMUnavailable(str(e)) from e
             last = e
-        except Exception as e:                     # timeout, connection refused
+        except Exception as e:                      # timeout, connection refused
             last = e
         log.warning("ollama call failed (%d/%d): %s", i + 1, retries + 1, last)
         if i < retries:

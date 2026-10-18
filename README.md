@@ -1,4 +1,6 @@
-# hybrid-rag-engine
+﻿# hybrid-rag-engine
+
+> Status: work in progress, still learning. Feedback welcome.
 
 A local, CPU-only hybrid RAG pipeline in Python whose main job is **refusing questions the documents cannot answer**.
 It is a hands-on practice project built to production-style standards (eval gates, a frozen test set, retries, tests), not a live service.

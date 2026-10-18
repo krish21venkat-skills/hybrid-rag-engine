@@ -140,3 +140,12 @@ def test_trace_id_on_every_stage(monkeypatch, caplog):
     stages = [re.search(r"stage=(\w+)", m).group(1) for m in lines]
     assert stages[0] == "start" and stages[-1] == "done"
     assert {"retrieve", "judge", "fit"} <= set(stages)
+
+def test_repeat_question_uses_cache(monkeypatch):
+    calls = fake_chat(monkeypatch, judge={"answer_found": True, "quote": QUOTE, "answer": "10 days"})
+    g = make_graph([hit()])
+    q = "How many days of annual leave do employees get?"
+    g.ask(q)
+    n = len(calls)
+    assert g.ask(q.upper())["answer"] == "10 days"
+    assert len(calls) == n

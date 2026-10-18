@@ -5,21 +5,20 @@ import logging
 import re
 import time
 import uuid
-from .logging_utils import stage
-
 from dataclasses import replace
 from typing import TypedDict
-from .llm import LLMUnavailable, llm_chat
 
-import ollama
 from langgraph.graph import END, START, StateGraph
 
 from .config import Settings, load_settings
+from .llm import LLMUnavailable, llm_chat
+from .logging_utils import stage
 from .pipeline import RAGPipeline
 
 MAX_Q = 500
 TRACE_FIELDS = {"retrieve": ("top1",), "judge": ("said", "quote_ok"), "fit": ("fit_blocked",),
                 "rewrite": ("tries",), "abstain": ("decision",)}
+
 log = logging.getLogger(__name__)
 NO_ANSWER = "I couldn't find this in the documents."
 
@@ -57,6 +56,10 @@ UNITS = ["days", "weeks", "months", "years", "hours", "minutes", "characters",
 FREQ = re.compile(r"\b(every|each|daily|weekly|monthly|yearly|annual\w*|twice|once|per|hourly|times|"
                   r"a (?:year|month|week|day))\b", re.I)
 
+STOP = set("a an the of to in on for is are was were be do does did what who when where which how "
+           "i my me we our you your it its and or if can will with by at as from this that "
+           "get much many long often".split())
+
 
 def supported(quote: str, context: str) -> bool:
     """Quote must be (nearly) made of words that appear in the context."""
@@ -80,9 +83,6 @@ def unit_ok(question: str, text: str) -> bool:
         return False
     return True
 
-STOP = set("a an the of to in on for is are was were be do does did what who when where which how "
-           "i my me we our you your it its and or if can will with by at as from this that "
-           "get much many long often".split())
 
 def closest_sentence(question: str, hits) -> str:
     """Context sentence sharing the most content words with the question (no LLM). '' if weak."""
@@ -97,6 +97,7 @@ def closest_sentence(question: str, hits) -> str:
             if n > best_n:
                 best, best_n = s, n
     return best
+
 
 class State(TypedDict):
     question: str
@@ -113,6 +114,7 @@ class State(TypedDict):
     related: str
     partial: str
     trace_id: str
+
 
 class GraphRAG:
     def __init__(self, settings: Settings | None = None):
@@ -154,8 +156,8 @@ class GraphRAG:
     def _fit(self, st: State):
         """Does the quoted sentence give the specific thing asked? Extraction prompt plus unit check."""
         r = llm_chat(model=self.s.llm_model, options={"temperature": 0, "num_predict": 24},
-                        messages=[{"role": "user",
-                                        "content": EXTRACT.format(question=st["question"], quote=st["quote"])}])
+                     messages=[{"role": "user",
+                                "content": EXTRACT.format(question=st["question"], quote=st["quote"])}])
         direct = not r["message"]["content"].strip().upper().startswith("NONE")
         unit = unit_ok(st["question"], st["answer"] + " " + st["quote"])
         log.info("fit direct=%s unit=%s", direct, unit)
@@ -165,7 +167,7 @@ class GraphRAG:
 
     def _rewrite(self, st: State):
         msg = llm_chat(model=self.s.llm_model, options={"temperature": 0, "num_predict": 40},
-                          messages=[{"role": "user", "content": REWRITE + st["question"]}])
+                       messages=[{"role": "user", "content": REWRITE + st["question"]}])
         q = msg["message"]["content"].strip().strip('"') or st["question"]
         log.info("rewrite -> %r", q)
         return {"query": q, "tries": st["tries"] + 1}
@@ -188,6 +190,7 @@ class GraphRAG:
     def _route_fit(self, st: State):
         return END if st["decision"] == "answer" else "abstain"
 
+    # ---- graph ----
     def _traced(self, name, fn):
         def run(st):
             t0 = time.perf_counter()
@@ -224,6 +227,10 @@ class GraphRAG:
         if len(question) > MAX_Q:
             return {**state, "decision": "invalid",
                     "answer": f"Question is too long (max {MAX_Q} characters)."}
+        cache = self.__dict__.setdefault("_cache", {})
+        key = question.lower()
+        if key in cache:
+            return cache[key]
         tid, t0 = state["trace_id"], time.perf_counter()
         stage(log, tid, "start", q=repr(question[:80]))
         try:
@@ -234,6 +241,8 @@ class GraphRAG:
                    "answer": "The language model is not responding. Check that Ollama is running and try again."}
         stage(log, tid, "done", decision=res["decision"], top1=f"{res['top1']:.3f}",
               total_ms=(time.perf_counter() - t0) * 1000)
+        if res["decision"] in ("answer", "abstain"):    # never cache errors or invalid input
+            cache[key] = res
         return res
 
 
