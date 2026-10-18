@@ -1,0 +1,11 @@
+{"question": "Who has to sign off on a 12-day leave request?", "source": "LeaveRules.txt", "answer_contains": "approval from the department head"}
+{"question": "What response time should 95% of requests meet?", "source": "TechNotes.md", "answer_contains": "800 milliseconds at the 95th percentile"}
+{"question": "What does E-4021 usually point to?", "source": "TechNotes.md", "answer_contains": "failed schema validation"}
+{"question": "How is the meter data protected in transit?", "source": "ProductSpecs.md", "answer_contains": "encrypted with AES-256"}
+{"question": "do i get paid if i take a sick day as contractor", "source": "ContractorPolicy.txt", "answer_contains": "do not receive paid annual leave or sick leave"}
+{"question": "vpn wont connect says 707", "source": "ITHelpdeskFAQ.md", "answer_contains": "device certificate has expired"}
+{"question": "What is the timeout of the refresh endpoint?", "source": null, "type": "trap"}
+{"question": "What is the phone number to escalate a SEV1?", "source": null, "type": "trap"}
+{"question": "What happens if I miss the 10:00 AM sick leave call to my manager?", "source": null, "type": "trap"}
+{"question": "Who decides the ratings in performance reviews?", "source": null, "type": "trap"}
+{"question": "What are the exit criteria for the 90-day improvement plan?", "source": null, "type": "trap"}

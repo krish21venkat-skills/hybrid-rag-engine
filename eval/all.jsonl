@@ -1,0 +1,75 @@
+{"question": "How many annual leave days can be carried forward?", "source": "LeaveRules.txt"}
+{"question": "When do unused carried-forward leave days lapse?", "source": "LeaveRules.txt"}
+{"question": "How long is paternity leave?", "source": "LeaveRules.txt"}
+{"question": "What is the hotel cost limit in metro cities?", "source": "CompanyPolicy.txt"}
+{"question": "How often must passwords be changed?", "source": "CompanyPolicy.txt"}
+{"question": "Within how many hours must a lost device be reported?", "source": "CompanyPolicy.txt"}
+{"question": "What does error E-4021 mean?", "source": "TechNotes.md"}
+{"question": "What is the API rate limit per minute?", "source": "TechNotes.md"}
+{"question": "When does the automatic rollback trigger after a release?", "source": "TechNotes.md"}
+{"question": "How long are access tokens valid?", "source": "TechNotes.md"}
+
+{"question": "How many days of unpaid leave can a contractor take?", "source": "ContractorPolicy.txt", "answer_contains": "8 days"}
+{"question": "What is the hotel limit for contractors?", "source": "ContractorPolicy.txt", "answer_contains": "3,500"}
+{"question": "Which days must contractors be on site?", "source": "ContractorPolicy.txt", "answer_contains": "Tuesdays and Wednesdays"}
+{"question": "What is the hotel limit for employees in metro cities?", "source": "CompanyPolicy.txt", "answer_contains": "6,000"}
+{"question": "How many vacation days do staff get each year?", "source": "LeaveRules.txt", "answer_contains": "24 days of paid annual leave"}
+{"question": "What does VPN error VPN-707 mean?", "source": "ITHelpdeskFAQ.md", "answer_contains": "certificate has expired"}
+{"question": "How long is an account locked after failed sign-in attempts?", "source": "ITHelpdeskFAQ.md", "answer_contains": "30 minutes"}
+{"question": "What are the helpdesk support hours?", "source": "ITHelpdeskFAQ.md", "answer_contains": "8:00 AM to 8:00 PM"}
+{"question": "What is the accuracy class of the SM-300?", "source": "ProductSpecs.md", "answer_contains": "0.5S"}
+{"question": "What does display code E07 mean?", "source": "ProductSpecs.md", "answer_contains": "tamper"}
+{"question": "How many days of readings can the meter store offline?", "source": "ProductSpecs.md", "answer_contains": "60 days"}
+{"question": "How quickly must on-call acknowledge a SEV1?", "source": "IncidentRunbook.md", "answer_contains": "within 5 minutes"}
+{"question": "When must the post-incident review be held?", "source": "IncidentRunbook.md", "answer_contains": "within 5 working days"}
+{"question": "At what error rate does the pipeline automatically roll back a release?", "source": "TechNotes.md", "answer_contains": "exceeds 2 percent"}
+{"question": "What is the CEO's salary?", "source": null}
+{"question": "What is the company's stock price today?", "source": null}
+{"question": "Who won the cricket world cup?", "source": null}
+
+{"question": "what happens to my leave if i join in the middle of the month", "source": "LeaveRules.txt", "answer_contains": "following month"}
+{"question": "do i get a day off if a holiday lands on a saturday", "source": "LeaveRules.txt", "answer_contains": "no compensatory day off"}
+{"question": "who do i tell if i'm sick and by what time", "source": "LeaveRules.txt", "answer_contains": "10:00 AM"}
+{"question": "how early should i apply for time off", "source": "LeaveRules.txt", "answer_contains": "at least 5 working days"}
+{"question": "how many hours must i be online on chat during the day", "source": "CompanyPolicy.txt", "answer_contains": "11:00 AM to 4:00 PM"}
+{"question": "what happens if my review rating is poor", "source": "CompanyPolicy.txt", "answer_contains": "90-day performance improvement plan"}
+{"question": "which flights can i book above economy", "source": "CompanyPolicy.txt", "answer_contains": "exceeds 6 hours"}
+{"question": "app keeps saying my token is expired what do i do", "source": "TechNotes.md", "answer_contains": "refresh endpoint"}
+{"question": "what does it mean when the meter shows no signal", "source": "ProductSpecs.md", "answer_contains": "E01"}
+{"question": "when do i lose access after my contract finishes", "source": "ContractorPolicy.txt", "answer_contains": "6:00 PM"}
+{"question": "How long can a contractor engagement last?", "source": "ContractorPolicy.txt", "answer_contains": "3 to 12 months"}
+{"question": "When must contractor invoices be submitted?", "source": "ContractorPolicy.txt", "answer_contains": "5th"}
+{"question": "How long is maternity leave for the third child?", "source": "LeaveRules.txt", "answer_contains": "12 weeks"}
+{"question": "What is the reporting interval of the SM-200?", "source": "ProductSpecs.md", "answer_contains": "15 minutes"}
+{"question": "What is the operating temperature range of the SM-300?", "source": "ProductSpecs.md", "answer_contains": "-20 to 60 C"}
+{"question": "How many orders can a batch request contain?", "source": "TechNotes.md", "answer_contains": "500 orders"}
+{"question": "How many times does the service retry when the payment gateway is down?", "source": "TechNotes.md", "answer_contains": "3 times"}
+{"question": "How soon are contractor expense claims paid?", "source": "ContractorPolicy.txt", "answer_contains": "20 working days"}
+{"question": "How often are laptops refreshed?", "source": "ITHelpdeskFAQ.md", "answer_contains": "every 4 years"}
+{"question": "What is the extension for critical outages?", "source": "ITHelpdeskFAQ.md", "answer_contains": "4411"}
+
+{"question": "How many days of bereavement leave are allowed?", "source": null}
+{"question": "What is the policy on sabbatical leave?", "source": null}
+{"question": "How many casual leave days do employees get?", "source": null}
+{"question": "What is the compensation for overtime work?", "source": null}
+{"question": "What is the daily allowance for international business travel?", "source": null}
+{"question": "Can employees claim reimbursement for home internet?", "source": null}
+{"question": "What is the notice period for employees who resign?", "source": null}
+{"question": "What is the work-from-home equipment allowance?", "source": null}
+{"question": "What is the retention period for company emails?", "source": null}
+{"question": "What is the contractor rate of pay per hour?", "source": null}
+{"question": "How do I get a replacement for a damaged Orion meter?", "source": null}
+{"question": "What is the price of the Orion SM-300?", "source": null}
+{"question": "Does the Orders API support webhooks?", "source": null}
+{"question": "Which PostgreSQL version does the Orders API use?", "source": null}
+{"question": "Who is the current incident commander on call?", "source": null}
+{"question": "What is the capital of Australia?", "source": null}
+{"question": "Who is the CEO of Acme Corp?", "source": null}
+{"question": "What is the weather in Bangalore today?", "source": null}
+{"question": "Write a Python function to reverse a string.", "source": null}
+{"question": "What is the Wi-Fi password for the guest network?", "source": null}
+{"question": "What time is the company picnic?", "source": null}
+{"question": "How do I make filter coffee?", "source": null}
+{"question": "What is the exchange rate of USD to INR?", "source": null}
+{"question": "Who won the last cricket world cup?", "source": null}
+{"question": "What is on the cafeteria menu today?", "source": null}

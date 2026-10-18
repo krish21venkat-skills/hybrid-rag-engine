@@ -1,0 +1,98 @@
+{"question": "If I join on the 20th, when does my leave start building up?", "source": "LeaveRules.txt", "answer_contains": "begin accruing from the following month"}
+{"question": "how many leave days do you earn each month", "source": "LeaveRules.txt", "answer_contains": "2 days per month of service"}
+{"question": "What is the deadline for using carried-over annual leave?", "source": "LeaveRules.txt", "answer_contains": "lapses on 31 March of the following year"}
+{"question": "Do I need a doctor's certificate for a 3-day sick absence?", "source": "LeaveRules.txt", "answer_contains": "exceeds 2 consecutive working days"}
+{"question": "How long after the baby is born can paternity leave be taken?", "source": "LeaveRules.txt", "answer_contains": "within 6 months of the"}
+{"question": "Who has to sign off on a 12-day leave request?", "source": "LeaveRules.txt", "answer_contains": "approval from the department head"}
+{"question": "How is a no-show of more than three days treated?", "source": "LeaveRules.txt", "answer_contains": "abandonment of duty"}
+{"question": "What are the standard office hours?", "source": "CompanyPolicy.txt", "answer_contains": "9:30 AM to 6:30 PM"}
+{"question": "Who must approve a permanent work-from-home arrangement?", "source": "CompanyPolicy.txt", "answer_contains": "written approval from the VP of the department"}
+{"question": "What is the daily meal allowance on business trips?", "source": "CompanyPolicy.txt", "answer_contains": "1,500 rupees per day"}
+{"question": "What receipts are needed when claiming expenses?", "source": "CompanyPolicy.txt", "answer_contains": "original receipts attached"}
+{"question": "Where do I report discrimination?", "source": "CompanyPolicy.txt", "answer_contains": "Ethics Committee at ethics@acme.example"}
+{"question": "What disk protection must work laptops have?", "source": "CompanyPolicy.txt", "answer_contains": "full-disk encryption"}
+{"question": "In which months are performance reviews held?", "source": "CompanyPolicy.txt", "answer_contains": "in June and December"}
+{"question": "What rating scale is used in reviews?", "source": "CompanyPolicy.txt", "answer_contains": "five-point scale"}
+{"question": "Can a contract be extended more than once?", "source": "ContractorPolicy.txt", "answer_contains": "extended once"}
+{"question": "How many hours a week do contractors work?", "source": "ContractorPolicy.txt", "answer_contains": "40 hours per week"}
+{"question": "how much notice before taking unpaid leave as a contractor", "source": "ContractorPolicy.txt", "answer_contains": "at least 7 working days in advance"}
+{"question": "Are contractors reimbursed for meals?", "source": "ContractorPolicy.txt", "answer_contains": "Meals are not reimbursed"}
+{"question": "How long after approving an invoice is the contractor paid?", "source": "ContractorPolicy.txt", "answer_contains": "within 30 days of invoice approval"}
+{"question": "When is a contractor's system access switched off?", "source": "ContractorPolicy.txt", "answer_contains": "6:00 PM on the last day"}
+{"question": "What database does the Orders API store its data in?", "source": "TechNotes.md", "answer_contains": "stores data in PostgreSQL"}
+{"question": "What response time should 95% of requests meet?", "source": "TechNotes.md", "answer_contains": "800 milliseconds at the 95th percentile"}
+{"question": "What HTTP status comes back for an expired token?", "source": "TechNotes.md", "answer_contains": "HTTP 401"}
+{"question": "What happens when I go over the API rate limit?", "source": "TechNotes.md", "answer_contains": "HTTP 429"}
+{"question": "How many requests per minute can batch endpoints take?", "source": "TechNotes.md", "answer_contains": "10 requests per minute"}
+{"question": "What does E-4021 usually point to?", "source": "TechNotes.md", "answer_contains": "failed schema validation"}
+{"question": "Who approves hotfixes outside the release schedule?", "source": "TechNotes.md", "answer_contains": "on-call engineering manager"}
+{"question": "How do I get the VPN client?", "source": "ITHelpdeskFAQ.md", "answer_contains": "software portal"}
+{"question": "How long does a new VPN certificate take to issue?", "source": "ITHelpdeskFAQ.md", "answer_contains": "usually takes 1 business day"}
+{"question": "How early are accounts created for new joiners?", "source": "ITHelpdeskFAQ.md", "answer_contains": "2 working days before the joining date"}
+{"question": "Which category do I use to request a monitor?", "source": "ITHelpdeskFAQ.md", "answer_contains": "category Peripherals"}
+{"question": "Who handles an outage in the middle of the night?", "source": "ITHelpdeskFAQ.md", "answer_contains": "24 hours a day"}
+{"question": "What kind of meter is the SM-300?", "source": "ProductSpecs.md", "answer_contains": "three-phase variant"}
+{"question": "What mounting does the SM-200 use?", "source": "ProductSpecs.md", "answer_contains": "standard DIN rail"}
+{"question": "What does display code E12 mean?", "source": "ProductSpecs.md", "answer_contains": "internal battery is below 10 percent"}
+{"question": "How is the meter data protected in transit?", "source": "ProductSpecs.md", "answer_contains": "encrypted with AES-256"}
+{"question": "Who is allowed to install the meter?", "source": "ProductSpecs.md", "answer_contains": "certified technician"}
+{"question": "What is a SEV3 incident?", "source": "IncidentRunbook.md", "answer_contains": "minor issue with a workaround available"}
+{"question": "Who owns communication during an incident?", "source": "IncidentRunbook.md", "answer_contains": "incident commander owns communication"}
+{"question": "How soon must an incident commander be assigned for SEV1?", "source": "IncidentRunbook.md", "answer_contains": "within 15 minutes"}
+{"question": "When should I roll back after a release?", "source": "IncidentRunbook.md", "answer_contains": "within 60 minutes of a release"}
+{"question": "How often are post-incident action items reviewed?", "source": "IncidentRunbook.md", "answer_contains": "reviewed monthly"}
+{"question": "whats the hotel cap for contractors per night", "source": "ContractorPolicy.txt", "answer_contains": "3,500 rupees per night"}
+{"question": "how long can i keep my laptop after my contract ends", "source": "ContractorPolicy.txt", "answer_contains": "within 3 working days of contract end"}
+{"question": "do i get paid if i take a sick day as contractor", "source": "ContractorPolicy.txt", "answer_contains": "do not receive paid annual leave or sick leave"}
+{"question": "laptop got stolen who do i tell", "source": "CompanyPolicy.txt", "answer_contains": "IT Security desk within 2 hours"}
+{"question": "vpn wont connect says 707", "source": "ITHelpdeskFAQ.md", "answer_contains": "device certificate has expired"}
+{"question": "What is the screen size of the SM-300 display?", "source": null, "type": "trap"}
+{"question": "What is the IP rating of the Orion meter?", "source": null, "type": "trap"}
+{"question": "How much does the SM-300 weigh?", "source": null, "type": "trap"}
+{"question": "What are the physical dimensions of the SM-300?", "source": null, "type": "trap"}
+{"question": "Which software version do the meters run?", "source": null, "type": "trap"}
+{"question": "Does the SM-200 support Wi-Fi?", "source": null, "type": "trap"}
+{"question": "Which mobile operators does the meter work with in India?", "source": null, "type": "trap"}
+{"question": "What is the maximum length of the customer_id field?", "source": null, "type": "trap"}
+{"question": "What is the base URL of the Orders API?", "source": null, "type": "trap"}
+{"question": "What is the Redis eviction policy used for caching?", "source": null, "type": "trap"}
+{"question": "What is the timeout of the refresh endpoint?", "source": null, "type": "trap"}
+{"question": "What is the retry delay after error E-5003?", "source": null, "type": "trap"}
+{"question": "How long does a SEV4 defect take to fix?", "source": null, "type": "trap"}
+{"question": "What is the phone number to escalate a SEV1?", "source": null, "type": "trap"}
+{"question": "How many days of paid leave do interns get?", "source": null, "type": "trap"}
+{"question": "Do part-time employees get the same 24 days of leave?", "source": null, "type": "trap"}
+{"question": "How many days of leave are given for jury duty?", "source": null, "type": "trap"}
+{"question": "What happens if I miss the 10:00 AM sick leave call to my manager?", "source": null, "type": "trap"}
+{"question": "What is the encashment rate for unused annual leave?", "source": null, "type": "trap"}
+{"question": "Who decides the ratings in performance reviews?", "source": null, "type": "trap"}
+{"question": "What are the exit criteria for the 90-day improvement plan?", "source": null, "type": "trap"}
+{"question": "What is the mileage rate for using a personal car on business trips?", "source": null, "type": "trap"}
+{"question": "Can a contractor apply for internal job openings?", "source": null, "type": "trap"}
+{"question": "What is the notice period for ending a contract early?", "source": null, "type": "trap"}
+{"question": "What is the helpdesk email address?", "source": null, "type": "trap"}
+{"question": "What is the warranty period for company laptops?", "source": null, "type": "trap"}
+{"question": "What are the helpdesk hours on public holidays?", "source": null, "type": "trap"}
+{"question": "Why was the 25,000 rupee approval limit lowered last year?", "source": null, "type": "trap"}
+{"question": "What was the leave policy before January 2026?", "source": null, "type": "trap"}
+{"question": "What will the leave policy look like in 2027?", "source": null, "type": "trap"}
+{"question": "cn i bring my dog 2 office", "source": null, "type": "messy"}
+{"question": "do we get diwali off", "source": null, "type": "messy"}
+{"question": "any bonus this yr??", "source": null, "type": "messy"}
+{"question": "who is my skip level manager", "source": null, "type": "messy"}
+{"question": "wat is the salry for a new grad", "source": null, "type": "messy"}
+{"question": "is there a creche in the office", "source": null, "type": "messy"}
+{"question": "can i get a cab after 9pm", "source": null, "type": "messy"}
+{"question": "when is the next team outing", "source": null, "type": "messy"}
+{"question": "What is the speed of light?", "source": null, "type": "offdomain"}
+{"question": "Who painted the Mona Lisa?", "source": null, "type": "offdomain"}
+{"question": "How do I make a cup of tea?", "source": null, "type": "offdomain"}
+{"question": "Suggest a name for a pet parrot.", "source": null, "type": "offdomain"}
+{"question": "How many players are in a football team?", "source": null, "type": "offdomain"}
+{"question": "What is 15 percent of 240?", "source": null, "type": "offdomain"}
+{"question": "Explain photosynthesis in one line.", "source": null, "type": "offdomain"}
+{"question": "How do I reverse a string in JavaScript?", "source": null, "type": "offdomain"}
+{"question": "What is the tallest mountain in the world?", "source": null, "type": "offdomain"}
+{"question": "Which planet is known as the Red Planet?", "source": null, "type": "offdomain"}
+{"question": "What is the capital of Japan?", "source": null, "type": "offdomain"}
+{"question": "What is the freezing point of water in Fahrenheit?", "source": null, "type": "offdomain"}

@@ -1,0 +1,24 @@
+{"question": "How many days of paid sick leave do I get in a year?", "source": "LeaveRules.txt", "answer_contains": "12 days"}
+{"question": "Can unused sick leave be cashed out?", "source": "LeaveRules.txt", "answer_contains": "encashed"}
+{"question": "What is the minimum password length?", "source": "CompanyPolicy.txt", "answer_contains": "14 characters"}
+{"question": "After how many minutes of inactivity does the laptop screen lock?", "source": "CompanyPolicy.txt", "answer_contains": "5 minutes"}
+{"question": "Who has to approve very large expense claims?", "source": "CompanyPolicy.txt", "answer_contains": "finance controller"}
+{"question": "How many database connections are in the pool per instance?", "source": "TechNotes.md", "answer_contains": "20 connections"}
+{"question": "How much does the SM-200 weigh?", "source": "ProductSpecs.md", "answer_contains": "1.2 kg"}
+{"question": "How quickly must a SEV2 be acknowledged?", "source": "IncidentRunbook.md", "answer_contains": "within 15 minutes"}
+{"question": "can i expense my meals on a work trip", "source": "CompanyPolicy.txt", "answer_contains": "1,500"}
+{"question": "i lost my laptop what now", "source": "CompanyPolicy.txt", "answer_contains": "within 2 hours"}
+{"question": "the app feels slow, what response time is expected", "source": "TechNotes.md", "answer_contains": "800 milliseconds"}
+{"question": "kitne din ki sick leave milti hai?", "source": "LeaveRules.txt", "answer_contains": "12 days"}
+{"question": "How many days of study leave can employees take?", "source": null}
+{"question": "What is the maximum laptop budget for new hires?", "source": null}
+{"question": "Does the Orders API support pagination?", "source": null}
+{"question": "Which Redis version does the platform use?", "source": null}
+{"question": "How often are firmware updates pushed to the meters?", "source": null}
+{"question": "What is the warranty claim process for the Orion meter?", "source": null}
+{"question": "What is the on-call rotation schedule?", "source": null}
+{"question": "Is there a gym membership benefit?", "source": null}
+{"question": "Who chairs the Ethics Committee?", "source": null}
+{"question": "How do I book a meeting room?", "source": null}
+{"question": "What is the speed limit on the company campus?", "source": null}
+{"question": "Translate good morning into French.", "source": null}

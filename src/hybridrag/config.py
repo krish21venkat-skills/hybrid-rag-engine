@@ -24,6 +24,9 @@ class Settings:
     min_rerank_score: float = 0.05  # tune on your eval set
     rrf_k: int = 60
 
+    abstain_below: float = 0.01     # NEW: best rerank score under this, abstain without calling the LLM
+    max_retries: int = 0            # NEW: query rewrites tried when no supporting quote is found
+
     db_path: Path = Path("storage/chroma")
     collection: str = "docs"
 
