@@ -27,3 +27,4 @@ __pycache__/
 .pytest_cache/
 scripts/archive/
 eval/archive/
+_archive/
